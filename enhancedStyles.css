@@ -1,16 +1,20 @@
 .list-card-labels .card-label {
-  border-radius: 0px 0px 4px 4px;
-  font-size: 10px;
+  border-radius: 4px;
+  font-size: 0.8em;
   height: auto;
   line-height: 10px;
-  margin: 0px;
   padding: 4px 6px;
   text-shadow: none;
   width: auto;
   min-width: 16px;
 }
 
-.list-card-labels {
-  top: -8px;
-  margin-bottom: -2px;
+.active-card .card-short-id {
+  display: inline;
+  margin-right: 5px;
+  color: #333;
+  font-weight: bold;
+}
+.card-short-id:hover {
+  color: grey;
 }
