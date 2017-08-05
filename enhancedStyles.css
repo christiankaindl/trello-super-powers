@@ -22,3 +22,19 @@
 .list-header-num-cards.hide {
   display: block;
 }
+
+/* Compact Mode */
+.compact-mode-button {
+  padding-left: 8px;
+  margin-left: 4px;
+}
+.compact-mode div.board-header-btns.mod-left a.board-header-btn.compact-mode-button {
+  background-color: rgba(0, 0, 0, 0.14);
+}
+.compact-mode .list-card-cover,
+.compact-mode .list-card-details .badges,
+.compact-mode .list-card-members,
+.compact-mode .list-card-stickers-area,
+.compact-mode .list-card-labels {
+  display: none;
+}

@@ -15,3 +15,24 @@ document.addEventListener('click', function(e) {
                 console.log("Copied!");
         }
 }, true);
+
+var compactModeBtn = document.createElement('a');
+
+compactModeBtn.setAttribute('class', 'board-header-btn compact-mode-button');
+compactModeBtn.setAttribute('title', 'Toggle Compact Mode');
+
+{
+        let inner = document.createElement('span');
+
+        inner.setAttribute('class', 'board-header-btn-text');
+        inner.textContent = "Compact Mode";
+
+        compactModeBtn.appendChild(inner);
+}
+
+compactModeBtn.addEventListener('click', function toggleCompactMode() {
+        // Toggle compactMode
+        document.getElementsByTagName('body')[0].classList.toggle('compact-mode');
+});
+
+document.getElementById('permission-level').parentElement.appendChild(compactModeBtn);
