@@ -7,11 +7,11 @@ This script initializes these 3 features:
 2. compact mode
 3. resizable lists
 */
+// What is this? --> browser.extensionTypes.RunAt = "document_end";
 
 var TSP = {
 	init() {
-
-		{ // Copy ID functionality
+		var copyIdFeature = new Promise(function(resolve, reject) {
 			let input = document.createElement('input');
 			// Add dummy element so we can use the clipboard function
 			document.getElementsByTagName('body')[0].appendChild(input);
@@ -28,9 +28,9 @@ var TSP = {
 					console.info("Copied!");
 				}
 			}, true);
-		}
-
-		{ // Compact Mode functionality
+			resolve();
+		});
+		var compactModeFeature = new Promise(function(resolve, reject) {
 			let compactModeBtn = document.createElement('a');
 
 			compactModeBtn.setAttribute('class', 'board-header-btn compact-mode-button');
@@ -51,9 +51,10 @@ var TSP = {
 			});
 
 			document.getElementById('permission-level').parentElement.appendChild(compactModeBtn);
-		}
 
-		{ // Resizeable lists functionality
+			resolve();
+		});
+		var resizableListsFeature = new Promise(function(resolve, reject) {
 			{
 				let styleElem = document.getElementsByTagName("head")[0].appendChild(document.createElement("style"));
 
@@ -80,9 +81,17 @@ var TSP = {
 				}
 			});
 			document.getElementById("board").appendChild(resizeElem);
-		}
+
+			resolve();
+		});
+
+		Promise.all([
+			copyIdFeature,
+			compactModeFeature,
+			resizableListsFeature
+		]).then(function success() {console.log("Initialized successfully")}, function failure(e) {console.log(":(", e)})
 	},
-	listWidth: browser.storage.sync.get("listWidth").then(function(result) {return result;}, function(result) {TSP.listWidth = TSP.defaultListWidth;}) || TSP.defaultListWidth,
+	listWidth: browser.storage.sync.get("listWidth").then(function(result) {return result;}, function(errMsg) {TSP.listWidth = TSP.defaultListWidth;}) || TSP.defaultListWidth,
 	defaultListWidth: 270
 };
 
