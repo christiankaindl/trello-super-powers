@@ -10,7 +10,7 @@
   	"64": "assets/TSP_64px.png",
   	"128": "assets/TSP_128px.png"
   },
-
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": ["*://*.trello.com/*"],
