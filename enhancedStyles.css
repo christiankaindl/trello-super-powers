@@ -38,3 +38,11 @@
 .compact-mode .list-card-labels {
   display: none;
 }
+
+/* Resize Element */
+.resize-element.list-wrapper {
+	height: 100%;
+	width: 8px;
+	cursor: col-resize;
+	margin: 0px;
+}
