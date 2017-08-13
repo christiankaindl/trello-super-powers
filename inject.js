@@ -55,32 +55,50 @@ var TSP = {
 			resolve();
 		});
 		var resizableListsFeature = new Promise(function(resolve, reject) {
-			{
-				let styleElem = document.getElementsByTagName("head")[0].appendChild(document.createElement("style"));
+			function createResizeElem() {
+				let resizeElem = document.createElement('div');
 
-				styleElem.textContent = `.list-wrapper {width: ${TSP.listWidth}px}`;
-				styleElem = styleElem.setAttribute("id", "inserted-tsp-styles");
+				resizeElem.setAttribute("class", "resize-element list-wrapper");
+				resizeElem.addEventListener("mousedown", function (e) {
+					document.addEventListener("mousemove", attach);
+					document.addEventListener("mouseup", remove);
+
+					function attach(e) {
+						let styleId = document.getElementById("inserted-tsp-styles");
+						styleId.textContent=`.list-wrapper {width: ${TSP.listWidth=TSP.listWidth+(e.movementX / 4)}px}`;
+						console.info(e.movementX);
+					}
+					function remove(e) {
+						//TODO: Save width to browser and apply it when page is reloaded
+
+						document.removeEventListener("mousemove", attach);
+						document.removeEventListener("mouseup", remove);
+					}
+				});
+
+				return resizeElem;
 			}
 
-			var resizeElem = document.createElement('div');
+			{
+			  let styleElem = document.getElementsByTagName("head")[0].appendChild(document.createElement("style"));
 
-			resizeElem.setAttribute("class", "resize-element list-wrapper");
-			resizeElem.addEventListener("mousedown", function (e) {
-				document.addEventListener("mousemove", attach);
-				document.addEventListener("mouseup", remove);
+			  styleElem.textContent = `.list-wrapper {width: ${TSP.listWidth}px}`;
+			  styleElem = styleElem.setAttribute("id", "inserted-tsp-styles");
+			}
 
-				function attach(e) {
-					document.getElementById("inserted-tsp-styles").textContent=`.list-wrapper {width: ${TSP.listWidth=TSP.listWidth+(e.movementX / 4)}px}`;
-					console.info(e.movementX);
-				}
-				function remove(e) {
-					//TODO: Save width to browser and apply it when page is reloaded
 
-					document.removeEventListener("mousemove", attach);
-					document.removeEventListener("mouseup", remove);
-				}
+			var lists = [];
+
+			document.getElementById("board").childNodes.forEach(function(listReference, i) {
+				lists[i] = listReference;
 			});
-			document.getElementById("board").appendChild(resizeElem);
+
+			for (let i = 1; i < lists.length; i++) {
+
+				let resizeElem = createResizeElem();
+
+				lists[i].parentElement.insertBefore(resizeElem, lists[i]);
+			}
 
 			resolve();
 		});
