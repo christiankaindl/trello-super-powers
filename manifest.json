@@ -1,21 +1,26 @@
 {
   "manifest_version": 2,
   "name": "Trello Super Powers",
-  "version": "0.5",
+  "version": "0.6",
 
-  "description": "Add Superpowers to your Trello board.",
+  "description": "Add Superpowers to your Trello board. Resizable lists, visible label text, compact mode and so much more...",
   "homepage_url": "https://github.com/christiankaindl/trello-super-powers",
   "icons": {
   	"32": "assets/TSP_32px.png",
   	"64": "assets/TSP_64px.png",
   	"128": "assets/TSP_128px.png"
   },
-  "permissions": ["storage"],
-  "content_scripts": [
-    {
-      "matches": ["*://*.trello.com/*"],
-      "css": ["enhancedStyles.css"],
-      "js": ["inject.js"]
-    }
-  ]
+  "permissions": [
+  	"tabs", "storage", "https://trello.com/b/*/"
+  ],
+  "background": {
+  	"scripts": ["background.js"]
+  },
+
+  "applications": {
+  "gecko": {
+    "id": "{e8a71c3b-3deb-4ab3-834a-5c0aee943847}",
+    "strict_min_version": "52.0"
+  }
+}
 }

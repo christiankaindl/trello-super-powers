@@ -1,3 +1,4 @@
+/*==== LABEL TEXT ====*/
 .list-card-labels .card-label {
   border-radius: 4px;
   font-size: 0.8em;
@@ -10,6 +11,7 @@
   max-width: 100%;
 }
 
+/*==== CARD ID ====*/
 .active-card .card-short-id {
   display: inline;
   margin-right: 5px;
@@ -19,11 +21,13 @@
 .card-short-id:hover {
   color: grey;
 }
+
+/*==== CARDS PER LIST ====*/
 .list-header-num-cards.hide {
   display: block;
 }
 
-/* Compact Mode */
+/*==== COMPACT MODE ====*/
 .compact-mode-button {
   padding-left: 8px;
   margin-left: 4px;
@@ -39,10 +43,24 @@
   display: none;
 }
 
-/* Resize Element */
-.resize-element.list-wrapper {
-	height: 100%;
-	width: 8px;
-	cursor: col-resize;
-	margin: 0px;
+/*==== RESIZABLE LISTS ====*/
+.resize-element {
+  height: 100%;
+  width: 8px;
+  cursor: col-resize;
+  margin: 0px;
+
+  /* borrowed from Trellos .list-wrapper*/
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.list-wrapper {
+  max-width: 400px;
+  min-width: 150px;
+}
+.list-card {
+  max-width: none;
+  min-width: none;
 }
