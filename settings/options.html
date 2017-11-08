@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TSP Options</title>
+  </head>
+  <style media="screen">
+    section {
+      width: 100%;
+      display: flex;
+    }
+    .checkbox {
+      width: 30%;
+      margin: 2rem;
+    }
+    .checkbox input, .checkbox label {
+      font-size: 1.7rem;
+    }
+    .checkbox p {
+      margin-left: 1rem;
+    }
+    .reference-image {
+      width: 30%;
+    }
+    section {
+      margin: 1rem 0;
+    }
+    hr {
+      border: 2px dashed #EEE;
+    }
+  </style>
+  <body>
+    <h1>Settings</h1>
+    <p>(Changes are saved automatically. Just reload your Trello boards for changes to take effect.)</p>
+    <form class="TSP-settings">
+      <section>
+        <div class="checkbox">
+          <input id="trello-id" type="checkbox" name="trello-id" checked>
+          <label for="trello-id">Card IDs on hover</label>
+          <p>Click on IDs to save them to your clipboard! Paste them in a comment and Trello will automatically show the corresponding card.</p>
+        </div>
+        <img class="reference-image" src="../assets/settings/id.png" alt="">
+      </section>
+      <hr>
+      <section>
+        <div class="checkbox">
+          <input id="trello-label" type="checkbox" name="trello-label" checked>
+          <label for="trello-label">Visible label text</label>
+        </div>
+        <img class="reference-image" src="../assets/settings/label.png" alt="Visible label text feature">
+      </section>
+      <hr>
+      <section>
+        <div class="checkbox">
+          <input id="trello-compact" type="checkbox" name="trello-compact" checked>
+          <label for="trello-compact">Compact Mode</label>
+          <p>Adds a button that lets you quickly toggle Compact Mode. When in Compact Mode, tags, assignations, attachments and more are hidden, so you ca focus on what matters.</p>
+        </div>
+        <img class="reference-image" src="../assets/settings/compact.png" alt="Compact Mode feature">
+      </section>
+    </form>
+
+    <script src="options.js">
+
+    </script>
+  </body>
+</html>

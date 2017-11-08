@@ -18,6 +18,11 @@
   	"scripts": ["background.js"]
   },
 
+  "options_ui": {
+    "page": "settings/options.html",
+    "browser_style": true
+  },
+
   "applications": {
   "gecko": {
     "id": "{e8a71c3b-3deb-4ab3-834a-5c0aee943847}",
