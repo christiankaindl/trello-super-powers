@@ -6,16 +6,15 @@ try {
 	var injectStatus = undefined;
 
 	function moveOn(e) {
-	console.log(e);
 		if (e.width)
 			return;
 
 		browser.storage.local.set({list: {width: 270}})
-		.then((e) => {console.log("TSP: Defaulting to 270 for listWidth now.")});
+		.then((e) => {console.info("TSP: Defaulting to 270 for listWidth now.")});
 	}
 
 	function onError(error) {
-		console.log(`Error: ${error}`);
+		console.error(`Error: ${error}`);
 	}
 
 	async function urlCheck(id, updateReason, state) {
@@ -32,7 +31,7 @@ try {
 			await browser.tabs.executeScript({file: "/inject.js"});
 
 			injectStatus = "fullfilled";
-			console.log(`TSP: successfully injected 'inject.js' into ${state.url}`);
+			console.info(`TSP: successfully injected 'inject.js' into ${state.url}`);
 		}
 		catch(e) {
 			injectStatus = "rejected";
@@ -48,7 +47,7 @@ try {
 	listen for URL changes initTrelloBoardand fire inizializations manually */
 	browser.tabs.onUpdated.addListener(urlCheck);
 
-	console.log("Trello Super Powers WebExtension started successfully.");
+	console.info("Trello Super Powers WebExtension started successfully.");
 }
 catch(e) {console.error("TSP Error: \n", e);}
 
