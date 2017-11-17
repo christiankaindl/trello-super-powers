@@ -1,5 +1,6 @@
 /*==== LABEL TEXT ====*/
-.list-card-labels .card-label {
+/* Label text is already there by default in Trello, it is just hidden */
+.TSP-label-enabled .list-card-labels .card-label {
   border-radius: 4px;
   font-size: 0.8em;
   height: auto;
@@ -12,34 +13,35 @@
 }
 
 /*==== CARD ID ====*/
-.active-card .card-short-id {
+.TSP-id-enabled .active-card .card-short-id {
   display: inline;
   margin-right: 5px;
   color: #333;
   font-weight: bold;
 }
-.card-short-id:hover {
+.TSP-id-enabled .card-short-id:hover {
   color: grey;
 }
 
 /*==== CARDS PER LIST ====*/
-.list-header-num-cards.hide {
+/* This is already there by default in Trello, it is just hidden */
+.TSP-numberOfCards-enabled .list-header-num-cards.hide {
   display: block;
 }
 
 /*==== COMPACT MODE ====*/
-.compact-mode-button {
+.TSP-compact-enabled .compact-mode-button {
   padding-left: 8px;
   margin-left: 4px;
 }
-.compact-mode div.board-header-btns.mod-left a.board-header-btn.compact-mode-button {
+.TSP-compact-enabled.compact-mode div.board-header-btns.mod-left a.board-header-btn.compact-mode-button {
   background-color: rgba(0, 0, 0, 0.14);
 }
-.compact-mode .list-card-cover,
-.compact-mode .list-card-details .badges,
-.compact-mode .list-card-members,
-.compact-mode .list-card-stickers-area,
-.compact-mode .list-card-labels {
+.TSP-compact-enabled.compact-mode .list-card-cover,
+.TSP-compact-enabled.compact-mode .list-card-details .badges,
+.TSP-compact-enabled.compact-mode .list-card-members,
+.TSP-compact-enabled.compact-mode .list-card-stickers-area,
+.TSP-compact-enabled.compact-mode .list-card-labels {
   display: none;
 }
 
