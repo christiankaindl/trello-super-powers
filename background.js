@@ -45,8 +45,6 @@ catch(e) {console.error("TSP Error: \n", e);}
 async function checkSettings() {
 	var settings = await browser.storage.local.get();
 
-	console.log(settings);
-
 	if (!settings['compactMode']) {
 		browser.storage.local.set({compactMode: true});
 	}

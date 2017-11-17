@@ -9,10 +9,6 @@ Inizialize Trello Super Powers features
 - number of cards per list
 */
 
-// TODO: Use WebExtension messenging system to get settings from the background script
-var settings = {},
-		board = document.getElementById("board");
-
 function gracefullyInject(feature) {
 	/** Takes a funtion and injects it
 	* TODO: add error handling logic
@@ -21,12 +17,7 @@ function gracefullyInject(feature) {
 }
 
 async function getSettings() {
-		var settings = await browser.storage.local.get();
-
-		// Do something with settings
-
-		console.log(settings);
-		return settings;
+		return await browser.storage.local.get();
 }
 
 var features = {
@@ -159,6 +150,9 @@ var features = {
 * TODO: Add logic to respect settings.
 */
 (async function(){
+	// TODO: Use WebExtension messenging system to get settings from the background script
+	var settings = {},
+			board = document.getElementById("board");
 
 	if ( (document.getElementById("TSP-init"))  ) // Already injected
 		return;
@@ -166,13 +160,22 @@ var features = {
 	if ( !board ) // Trello board not yet ready
 		return;
 
-	settings = getSettings();
+	var settings = getSettings();
 
 	// IDEA: Maybe a loop that iterates the 'features' object would be even easier
-	gracefullyInject(features.id);
-	gracefullyInject(features.compact);
-	gracefullyInject(features.label);
-	gracefullyInject(features.numberOfCards);
+	if (settings.copyId)
+		gracefullyInject(features.id);
+
+	if (settings.compactMode)
+		gracefullyInject(features.compact);
+
+	if (settings.labelText)
+		gracefullyInject(features.label);
+
+	if (settings.numberOfCards) {
+		gracefullyInject(features.numberOfCards);
+	}
+	
 	gracefullyInject(features.resize);
 
 	body.setAttribute('id', 'TSP-init');
