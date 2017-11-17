@@ -35,7 +35,7 @@
     <form class="TSP-settings">
       <section>
         <div class="checkbox">
-          <input id="trello-id" type="checkbox" name="trello-id" checked>
+          <input id="trello-id" type="checkbox" name="copyId" checked>
           <label for="trello-id">Card IDs on hover</label>
           <p>Click on IDs to save them to your clipboard! Paste them in a comment and Trello will automatically show the corresponding card.</p>
         </div>
@@ -44,19 +44,28 @@
       <hr>
       <section>
         <div class="checkbox">
-          <input id="trello-label" type="checkbox" name="trello-label" checked>
+          <input id="trello-label" type="checkbox" name="labelText" checked>
           <label for="trello-label">Visible label text</label>
+          <p>Note: Although Trello now supports this feature, it is not enabled by default and does not look as good as the ons provided by Trello Super Powers.</p>
         </div>
         <img class="reference-image" src="../assets/settings/label.png" alt="Visible label text feature">
       </section>
       <hr>
       <section>
         <div class="checkbox">
-          <input id="trello-compact" type="checkbox" name="trello-compact" checked>
-          <label for="trello-compact">Compact Mode</label>
+          <input id="trello-number" type="checkbox" name="compactMode" checked>
+          <label for="trello-compact">Compact Mode button</label>
           <p>Adds a button that lets you quickly toggle Compact Mode. When in Compact Mode, tags, assignations, attachments and more are hidden, so you ca focus on what matters.</p>
         </div>
         <img class="reference-image" src="../assets/settings/compact.png" alt="Compact Mode feature">
+      </section>
+      <section>
+        <div class="checkbox">
+          <input id="trello-numberOfCards" type="checkbox" name="numberOfCards" checked>
+          <label for="trello-numberOfCards">Number of cards per list</label>
+          <p>Shows a small indicator in each list with the number of cards in it.</p>
+        </div>
+        <img class="reference-image" src="../assets/settings/compact.png" alt="Number of cards feature">
       </section>
     </form>
 

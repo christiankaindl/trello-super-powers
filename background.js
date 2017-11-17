@@ -5,18 +5,6 @@ try {
 	const trelloBoardURL = /\S+:\/\/\S*\.?trello\.com\/b\/\S+/;
 	var injectStatus = undefined;
 
-	function moveOn(e) {
-		if (e.width)
-			return;
-
-		browser.storage.local.set({list: {width: 270}})
-		.then((e) => {console.info("TSP: Defaulting to 270 for listWidth now.")});
-	}
-
-	function onError(error) {
-		console.error(`Error: ${error}`);
-	}
-
 	async function urlCheck(id, updateReason, state) {
 		if ( !(state.url.match(trelloBoardURL)) )
 			return;
@@ -39,15 +27,39 @@ try {
 		}
 	}
 
-	browser.storage.local.get("list")
-	.then(moveOn, onError);
-
 	/* Trello uses AJAX loading and because of this when a board is loaded from
 	within the UI (not from URL) 'inject.js' won't be fired. To overcome this we
 	listen for URL changes initTrelloBoardand fire inizializations manually */
 	browser.tabs.onUpdated.addListener(urlCheck);
 
+	browser.runtime.onStartup.addListener(checkSettings);
+	browser.runtime.onInstalled.addListener(checkSettings);
+
 	console.info("Trello Super Powers WebExtension started successfully.");
 }
 catch(e) {console.error("TSP Error: \n", e);}
 
+/**
+* Checks current settings and defaults them as necessary
+*/
+async function checkSettings() {
+	var settings = await browser.storage.local.get();
+
+	console.log(settings);
+
+	if (!settings['compactMode']) {
+		browser.storage.local.set({compactMode: true});
+	}
+	if (!settings['numberOfCards']) {
+		browser.storage.local.set({numberOfCards: true});
+	}
+	if (!settings['labelText']) {
+		browser.storage.local.set({labelText: true});
+	}
+	if (!settings['copyId']) {
+		browser.storage.local.set({copyId: true});
+	}
+	if (!settings.list.width) {
+		browser.storage.local.set({list: {width: 270}});
+	}
+}
