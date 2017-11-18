@@ -45,19 +45,19 @@ catch(e) {console.error("TSP Error: \n", e);}
 async function checkSettings() {
 	var settings = await browser.storage.local.get();
 
-	if (!settings['compactMode']) {
+	if (settings['compactMode'] === undefined) {
 		browser.storage.local.set({compactMode: true});
 	}
-	if (!settings['numberOfCards']) {
+	if (settings['numberOfCards'] === undefined) {
 		browser.storage.local.set({numberOfCards: true});
 	}
-	if (!settings['labelText']) {
+	if (settings['labelText'] === undefined) {
 		browser.storage.local.set({labelText: true});
 	}
-	if (!settings['copyId']) {
+	if (settings['copyId'] === undefined) {
 		browser.storage.local.set({copyId: true});
 	}
-	if (!settings.list.width) {
+	if (settings.list.width === undefined) {
 		browser.storage.local.set({list: {width: 270}});
 	}
 }
