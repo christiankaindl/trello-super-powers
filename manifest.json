@@ -12,7 +12,7 @@
   	"128": "assets/TSP_logo.svg"
   },
   "permissions": [
-  	"tabs", "storage", "https://trello.com/b/*/"
+  	"tabs", "storage", "https://trello.com/b/*/", "notifications"
   ],
   "background": {
   	"scripts": ["background.js"]

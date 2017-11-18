@@ -4,6 +4,8 @@ async function updateStorage(e) {
   var setting = e.target.getAttribute('name'),
       value = e.target.checked;
   await browser.storage.local.set({[setting]: value});
+
+  browser.notifications.create({type: "basic", title: "Settings saved", message: "Trello Super Powers Add-on", iconUrl: "../assets/TSP_logo.svg"});
 }
 
 async function initialize() {
