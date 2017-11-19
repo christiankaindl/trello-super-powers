@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Trello Super Powers",
-  "version": "0.7dev",
+  "version": "0.7",
 
   "description": "Add Superpowers to your Trello board. Resizable lists, visible label text, compact mode and much more...",
   "homepage_url": "https://github.com/christiankaindl/trello-super-powers",
