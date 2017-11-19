@@ -178,5 +178,7 @@ var features = {
 
 	gracefullyInject(features.resize);
 
-	document.body.setAttribute('id', 'TSP-init');
+	let elem = document.createElement('span');
+	elem.setAttribute('id', 'TSP-init');
+	board.appendChild(elem);
 })();
