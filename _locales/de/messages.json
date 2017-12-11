@@ -20,7 +20,7 @@
     "description": "Name of the Compact Mode feature."
   },
   "settingsCompactDescription": {
-    "message": "Fügt einen Button hinzu, der dich bequem den Kompakt-Modus aktivieren/deaktivieren lässt. Wenn aktiv, werden Tags, zugewiesene Menschen, Anhänge und mehr ausgeblendet. so kannst Du dich auf das konyentrieren, was wirklich wichtig ist.",
+    "message": "Fügt einen Button hinzu, der dich bequem den Kompakt-Modus aktivieren/deaktivieren lässt. Wenn aktiv, werden Tags, zugewiesene Menschen, Anhänge und mehr ausgeblendet. so kannst Du dich auf das konzentrieren, was wirklich wichtig ist.",
     "description": "Description of the Compact Mode feature."
   },
   "settingsLabelTitle": {

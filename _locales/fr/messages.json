@@ -4,47 +4,47 @@
     "description": "Name of the extension."
   },
   "extensionDescription": {
-    "message": "Add Superpowers to your Trello board. Resizable lists, visible label text, compact mode and much more...",
+    "message": "Donnez des super pouvoirs à vos tableaux. Listes ajustables, affichage du titre des étiquettes, mode compact, et bien plus encore...",
     "description": "Description of the extension."
   },
   "settingsSavedNotificationTitle": {
-    "message": "Settings saved",
+    "message": "Préférences enregistrées",
     "description": "Notification title when settings are updated."
   },
   "settingsSavedNotificationBody": {
-    "message": "Reload your Trello boards for changes to take effect.",
+    "message": "Rechargez vos tableaux pour activer les nouveaux pouvoirs",
     "description": "Instuctions for the user in order for the changes to take effect."
   },
   "settingsCompactTitle": {
-    "message": "Compact Mode",
+    "message": "Mode Compact",
     "description": "Name of the Compact Mode feature."
   },
   "settingsCompactDescription": {
-    "message": "Adds a button that lets you quickly toggle Compact Mode. When in Compact Mode, tags, assignations, attachments and more are hidden, so you can focus on your tasks.",
+    "message": "Ajoute un bouton qui vous permet de passer rapidement en mode compact. En mode compact, les étiquettes, assignations, pièces jointes and autres éléments sont cachés pour mettre en évidence le titre de chaque carte.",
     "description": "Description of the Compact Mode feature."
   },
   "settingsLabelTitle": {
-    "message": "Visible label text",
+    "message": "Affichage du texte des étiquettes",
     "description": "Name of the visible label text feature."
   },
   "settingsLabelDescription": {
-    "message": "Shows the text of labels by default. Note: Although Trello now supports this feature, it is not enabled by default and does not look as good as the styles provided by Trello Super Powers.",
+    "message": "Affiche le text des étiquettes par défaut. Note: Bien que Trello propose désormais cette fonction, elle n’est pas activée par défaut et n’est pas aussi élégante qu’avec Trello Super Powers.",
     "description": "Description of the visible label text feature."
   },
   "settingsIdTitle": {
-    "message": "Card IDs on hover",
+    "message": "Numéro des cartes au survol",
     "description": "Name of the Card IDs on hover feature."
   },
   "settingsIdDescription": {
-    "message": "Click on IDs to save them to your clipboard! Paste them in a comment and Trello will automatically show the corresponding card.",
+    "message": "Cliquez sur ces numéros pour les copier dans votre presse-papier! Collez-les dans un commentaire pour afficher automatiquement la carte correspondante.",
     "description": "Description of the card IDs on hover feature."
   },
   "settingsNumberListTitle": {
-    "message": "Number of cards per list",
+    "message": "Nombre de carte par liste",
     "description": "Name of the Number of cards per list feature."
   },
   "settingsNumberListDescription": {
-    "message": "Shows a small indicator in each list with the number of cards in it.",
+    "message": "Affiche un petit indicateur dans chaque liste avec le nombre de cartes qu’elle contient.",
     "description": "Description of the cards per list feature."
   }
 }
