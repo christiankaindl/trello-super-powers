@@ -50,5 +50,9 @@
   "settingsNumberListDescription": {
     "message": "Affiche un petit indicateur dans chaque liste avec le nombre de cartes qu’elle contient.",
     "description": "Description of the cards per list feature."
+  },
+  "injectIdNotificationBody": {
+    "message": "Card ID saved to your clipboard.",
+    "description": "Message body when a user clicks on a card ID."
   }
 }

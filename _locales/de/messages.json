@@ -50,5 +50,9 @@
   "settingsNumberListDescription": {
     "message": "Fügt einen kleinen Indikator hinzu, der die Anzahl der enthaltenen Karten in jeder Liste anzeigt.",
     "description": "Description of the cards per list feature."
+  },
+  "injectIdNotificationBody": {
+    "message": "Karten-ID in die Zwischenablage gespeichert.",
+    "description": "Message body when a user clicks on a card ID."
   }
 }
