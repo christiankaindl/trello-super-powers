@@ -52,7 +52,7 @@
     "description": "Description of the cards per list feature."
   },
   "injectIdNotificationBody": {
-    "message": "Card ID saved to your clipboard.",
+    "message": "Carte copiée dans ton presse-papier",
     "description": "Message body when a user clicks on a card ID."
   }
 }
