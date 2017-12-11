@@ -84,7 +84,14 @@ var features = {
 	},
 	resize(){
 		return new Promise(async function(resolve, reject) {
-			var listWidth = ( await browser.storage.local.get() ).list.width || 270;
+			var listWidth;
+
+			try {
+				listWidth = (await browser.storage.local.get()).list.width;
+			} catch (e) {
+				console.error("TSP Error: Could not get local storage", e);
+				listWidth = 270;
+			}
 
 			function createResizeElem() {
 				let resizeElem = document.createElement('div');
@@ -100,12 +107,11 @@ var features = {
 							? (listWidth=listWidth+(e.movementX / 4))
 							: listWidth;
 
-						console.info("TSP: feature 'resize' injected");
 						styleId.textContent=`.list-wrapper {width: ${currentWidth}px}`;
 						console.info(e.movementX);
 					}
 					function remove(e) {
-					console.log(listWidth)
+						console.info(`New list width is now ${listWidth}px`);
 						browser.storage.local.set({list:{width: listWidth}})
 						.catch((e) => {console.error("TSP: Could not save 'listWidth' to browser sync storage.")});
 
