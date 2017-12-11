@@ -7,6 +7,10 @@
     "message": "Gib deinen Trello-Boards Superkräfte. Kompakt-Modus, sichtbare Labels, größenverstellbare Listen und noch viel mehr...",
     "description": "Description of the extension."
   },
+  "settingsHeading": {
+    "message": "Einstellungen",
+    "description": "Settings heading."
+  },
   "settingsSavedNotificationTitle": {
     "message": "Einstellungen gespeichert",
     "description": "Notification title when settings are updated."

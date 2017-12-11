@@ -7,6 +7,10 @@
     "message": "Donnez des super pouvoirs à vos tableaux. Listes ajustables, affichage du titre des étiquettes, mode compact, et bien plus encore...",
     "description": "Description of the extension."
   },
+  "settingsHeading": {
+    "message": "Préférences",
+    "description": "Settings heading."
+  },
   "settingsSavedNotificationTitle": {
     "message": "Préférences enregistrées",
     "description": "Notification title when settings are updated."

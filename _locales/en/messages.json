@@ -7,6 +7,10 @@
     "message": "Add Superpowers to your Trello board. Resizable lists, visible label text, compact mode and much more...",
     "description": "Description of the extension."
   },
+  "settingsHeading": {
+    "message": "Settings",
+    "description": "Settings heading."
+  },
   "settingsSavedNotificationTitle": {
     "message": "Settings saved",
     "description": "Notification title when settings are updated."
