@@ -40,10 +40,7 @@ var features = {
 					document.execCommand('copy');
 
 					// NOTE: Content Scripts do not have access to the notifications API. If a notification should be sent, we have to communicate with the background script using the messaging API
-					// browser.notifications.create({type: "basic", title: 'ID saved!', message: 'Trello Super Powers Add-on', iconUrl: "/assets/TSP_logo.svg"})
-					// .catch(function (e) {
-					// 	console.log(e);
-					// });
+					browser.runtime.sendMessage({type: "notification", message: browser.i18n.getMessage("injectIdNotificationBody")});
 				}
 			}, true);
 

@@ -61,3 +61,13 @@ async function checkSettings() {
 		browser.storage.local.set({list: {width: 270}});
 	}
 }
+
+browser.runtime.onMessage.addListener(handleMessage);
+
+function handleMessage(message, sender) {
+	console.log(message, ", ", sender);
+
+	if (message.type === "notification") {
+		browser.notifications.create({type: "basic", title: "Trello Super Powers", message: message.message, iconUrl: "/assets/logo.svg"});
+	}
+}
