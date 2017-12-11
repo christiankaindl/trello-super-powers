@@ -1,0 +1,50 @@
+{
+  "extensionName": {
+    "message": "Trello Super Powers",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Add Superpowers to your Trello board. Resizable lists, visible label text, compact mode and much more...",
+    "description": "Description of the extension."
+  },
+  "settingsSavedNotificationTitle": {
+    "message": "Settings saved",
+    "description": "Notification title when settings are updated."
+  },
+  "settingsSavedNotificationBody": {
+    "message": "Reload your Trello boards for changes to take effect.",
+    "description": "Instuctions for the user in order for the changes to take effect."
+  },
+  "settingsCompactTitle": {
+    "message": "Compact Mode",
+    "description": "Name of the Compact Mode feature."
+  },
+  "settingsCompactDescription": {
+    "message": "Adds a button that lets you quickly toggle Compact Mode. When in Compact Mode, tags, assignations, attachments and more are hidden, so you can focus on your tasks.",
+    "description": "Description of the Compact Mode feature."
+  },
+  "settingsLabelTitle": {
+    "message": "Visible label text",
+    "description": "Name of the visible label text feature."
+  },
+  "settingsLabelDescription": {
+    "message": "Shows the text of labels by default. Note: Although Trello now supports this feature, it is not enabled by default and does not look as good as the styles provided by Trello Super Powers.",
+    "description": "Description of the visible label text feature."
+  },
+  "settingsIdTitle": {
+    "message": "Card IDs on hover",
+    "description": "Name of the Card IDs on hover feature."
+  },
+  "settingsIdDescription": {
+    "message": "Click on IDs to save them to your clipboard! Paste them in a comment and Trello will automatically show the corresponding card.",
+    "description": "Description of the card IDs on hover feature."
+  },
+  "settingsNumberListTitle": {
+    "message": "Number of cards per list",
+    "description": "Name of the Number of cards per list feature."
+  },
+  "settingsNumberListDescription": {
+    "message": "Shows a small indicator in each list with the number of cards in it.",
+    "description": "Description of the cards per lis feature."
+  }
+}
