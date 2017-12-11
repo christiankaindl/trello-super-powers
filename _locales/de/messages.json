@@ -1,0 +1,50 @@
+{
+  "extensionName": {
+    "message": "Trello Super Powers",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Gib deinen Trello-Boards Superkräfte. Kompakt-Modus, sichtbare Labels, größenverstellbare Listen und noch viel mehr...",
+    "description": "Description of the extension."
+  },
+  "settingsSavedNotificationTitle": {
+    "message": "Einstellungen gespeichert",
+    "description": "Notification title when settings are updated."
+  },
+  "settingsSavedNotificationBody": {
+    "message": "Trello-Boards neu laden, damit die Veränderungen wirksam werden.",
+    "description": "Instuctions for the user in order for the changes to take effect."
+  },
+  "settingsCompactTitle": {
+    "message": "Kompakt-Modus",
+    "description": "Name of the Compact Mode feature."
+  },
+  "settingsCompactDescription": {
+    "message": "Fügt einen Button hinzu, der dich bequem den Kompakt-Modus aktivieren/deaktivieren lässt. Wenn aktiv, werden Tags, zugewiesene Menschen, Anhänge und mehr ausgeblendet. so kannst Du dich auf das konyentrieren, was wirklich wichtig ist.",
+    "description": "Description of the Compact Mode feature."
+  },
+  "settingsLabelTitle": {
+    "message": "Sichtbarer Label-Text",
+    "description": "Name of the visible label text feature."
+  },
+  "settingsLabelDescription": {
+    "message": "Macht den Text von Labels sichtbar. Anmerkung: Trello hat diese Funktion mittlerweile eingebaut, jedoch ist sie standardmäßig nicht aktiviert und schaut nicht so gut aus wie das Styling von Trello Super Powers.",
+    "description": "Description of the visible label text feature."
+  },
+  "settingsIdTitle": {
+    "message": "Karten-IDs",
+    "description": "Name of the Card IDs on hover feature."
+  },
+  "settingsIdDescription": {
+    "message": "Fahre mit der Maus über Karten, um ihre ID zu sehen. Mit einem Klick werden sie automatisch in deine Zwischenablage kopiert! Die ID kannst Du z.B. in Kommentaren verwenden um schnelle Verweise zu machen (Trello ersetzt die IDs mit Links zu den tatsächlichen Karten).",
+    "description": "Description of the card IDs on hover feature."
+  },
+  "settingsNumberListTitle": {
+    "message": "Anzahl der Karten in Listen",
+    "description": "Name of the Number of cards per list feature."
+  },
+  "settingsNumberListDescription": {
+    "message": "Fügt einen kleinen Indikator hinzu, der die Anzahl der enthaltenen Karten in jeder Liste anzeigt.",
+    "description": "Description of the cards per list feature."
+  }
+}
