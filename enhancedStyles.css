@@ -44,6 +44,9 @@
 .TSP-compact-enabled.compact-mode .list-card-labels {
   display: none;
 }
+.TSP-compact-enabled.compact-mode .list-card.is-stickered .list-card-details {
+  margin-top: 0;
+}
 
 /*==== RESIZABLE LISTS ====*/
 .resize-element {
