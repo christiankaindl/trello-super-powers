@@ -66,8 +66,6 @@ async function checkSettings() {
 browser.runtime.onMessage.addListener(handleMessage);
 
 function handleMessage(message, sender) {
-  console.log(message, ", ", sender);
-
   if (message.type === "notification") {
     browser.notifications.create({
       type: "basic",
