@@ -36,10 +36,17 @@ var features = {
             e.stopImmediatePropagation();
             e.preventDefault();
 
-            input.value = e.target.textContent;
-            input.select();
+            let elem = e.target;
+            while (true) {
+              elem = elem.parentNode;
 
-            document.execCommand("copy");
+              if (elem.tagName == "A") {
+                input.value = elem.href;
+                input.select();
+                document.execCommand("copy");
+                break;
+              }
+            }
 
             // NOTE: Content Scripts do not have access to the notifications API. If a notification should be sent, we have to communicate with the background script using the messaging API
             browser.runtime.sendMessage({
