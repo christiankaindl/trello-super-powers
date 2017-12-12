@@ -12,6 +12,7 @@
       float: left;
       width: 30%;
       margin: 2rem;
+      margin-top: 0.4rem;
     }
     section::after {
       content: "";
@@ -34,37 +35,37 @@
     }
   </style>
   <body>
-    <h1>Settings</h1>
+    <h1 data-translate="settingsHeading">Settings</h1>
     <form class="TSP-settings">
       <section>
         <div class="checkbox">
           <input id="trello-id" type="checkbox" name="copyId" checked>
-          <label for="trello-id">Card IDs on hover</label>
-          <p>Click on IDs to save them to your clipboard! Paste them in a comment and Trello will automatically show the corresponding card.</p>
+          <label for="trello-id" data-translate="settingsIdTitle">__MSG_settingsIdTitle__</label>
+          <p data-translate="settingsIdDescription">__MSG_settingsIdDescription__</p>
         </div>
         <img class="reference-image" src="../assets/settings/id.png" alt="">
       </section>
       <section>
         <div class="checkbox">
           <input id="trello-label" type="checkbox" name="labelText" checked>
-          <label for="trello-label">Visible label text</label>
-          <p>Note: Although Trello now supports this feature, it is not enabled by default and does not look as good as the styles provided by Trello Super Powers.</p>
+          <label for="trello-label"data-translate="settingsLabelTitle">__MSG_settingsLabelTitle__</label>
+          <p data-translate="settingsLabelDescription">__MSG_settingsLabelDescription__</p>
         </div>
         <img class="reference-image" src="../assets/settings/label.png" alt="Visible label text feature">
       </section>
       <section>
         <div class="checkbox">
           <input id="trello-compact" type="checkbox" name="compactMode" checked>
-          <label for="trello-compact">Compact Mode button</label>
-          <p>Adds a button that lets you quickly toggle Compact Mode. When in Compact Mode, tags, assignations, attachments and more are hidden, so you can focus on your tasks.</p>
+          <label for="trello-compact"  data-translate="settingsCompactTitle">__MSG_settingsCompactTitle__</label>
+          <p data-translate="settingsCompactDescription">__MSG_settingsCompactDescription__</p>
         </div>
         <img class="reference-image" src="../assets/settings/compact.png" alt="Compact Mode feature">
       </section>
       <section>
         <div class="checkbox">
           <input id="trello-numberOfCards" type="checkbox" name="numberOfCards" checked>
-          <label for="trello-numberOfCards">Number of cards per list</label>
-          <p>Shows a small indicator in each list with the number of cards in it.</p>
+          <label for="trello-numberOfCards" data-translate="settingsNumberListTitle">__MSG_settingsNumberListTitle__</label>
+          <p  data-translate="settingsNumberListDescription">__MSG_settingsNumberListDescription__</p>
         </div>
         <img class="reference-image" src="../assets/settings/numberOfCards.png" alt="Number of cards feature">
       </section>

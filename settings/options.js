@@ -16,6 +16,14 @@ async function initialize() {
     inputs[i].checked = settings[inputs[i].getAttribute("name")];
     inputs[i].addEventListener("change", updateStorage);
   }
+
+  var translate = document.querySelectorAll("[data-translate]");
+
+  console.log(translate);
+  for (let i = 0; i < translate.length; i++) {
+    let string = translate[i].getAttribute("data-translate");
+    translate[i].textContent = browser.i18n.getMessage(string, "settingsHeading");
+  }
 }
 
 initialize();
