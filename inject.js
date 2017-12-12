@@ -65,7 +65,7 @@ var features = {
 				let inner = document.createElement('span');
 
 				inner.setAttribute('class', 'board-header-btn-text');
-				inner.textContent = "Compact Mode";
+				inner.textContent = browser.i18n.getMessage("settingsCompactTitle");
 
 				compactModeBtn.appendChild(inner);
 			}
