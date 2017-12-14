@@ -16,6 +16,8 @@ try {
       await browser.tabs.insertCSS({ file: "/enhancedStyles.css" });
       await browser.tabs.executeScript({ file: "/inject.js" });
 
+      browser.pageAction.show(id);
+
       injectStatus = "fullfilled";
       console.info(`TSP: successfully injected 'inject.js' into ${state.url}`);
     } catch (e) {
@@ -65,7 +67,9 @@ async function checkSettings() {
 
 browser.runtime.onMessage.addListener(handleMessage);
 
-function handleMessage(message, sender) {
+async function handleMessage(message, sender) {
+  console.log("AAAAHHHH");
+  console.log(message);
   if (message.type === "notification") {
     browser.notifications.create({
       type: "basic",
@@ -73,5 +77,87 @@ function handleMessage(message, sender) {
       message: message.message,
       iconUrl: "/assets/logo.svg"
     });
+  }
+  if (message.type === "download") {
+    let url = URL.createObjectURL(message.data);
+    console.info("Trying to download: ", url);
+
+    browser.downloads.download({ url: url, filename: "data.json" });
+  }
+  if (message.type === "exportCSV") {
+    let {data} = message;
+    let [{ id: tabId, url }] = await browser.tabs.query({
+      active: true,
+      currentWindow: true
+    });
+
+    browser.pageAction.setIcon({
+      tabId: tabId,
+      path: "/assets/page-action/Spinner_test.gif"
+    });
+
+    await browser.tabs.executeScript(tabId, { file: "papaparse.min.js" });
+    var response = await browser.tabs.sendMessage(tabId, {
+      url: url,
+      type: "fetch",
+      options: data
+    });
+
+    var downloadUrl = URL.createObjectURL(response);
+
+    try {
+      browser.downloads.download({
+        url: downloadUrl,
+        filename: data.fileName
+      });
+      browser.pageAction.setIcon({
+        tabId: tabId,
+        path: "/assets/page-action/page-action-32.svg"
+      });
+      browser.notifications.create({
+        type: "basic",
+        title: "Board exported",
+        message: "Successfully downloaded your board as CSV."
+      });
+    } catch (e) {
+      console.error("TSP error: ", e);
+    }
+  }
+}
+
+// async function handlePageAction(e) {
+//   console.log("BLUB");
+//   browser.pageAction.setIcon({
+//     tabId: e.id,
+//     path: "/assets/page-action/Spinner_test.gif"
+//   });
+//   await browser.tabs.executeScript(e.id, { file: "papaparse.min.js" });
+//   exportToCSV(e.url, e.id);
+// }
+
+async function exportToCSV(url, tabId) {
+  var response = await browser.tabs.sendMessage(tabId, {
+    url: url,
+    type: "fetch"
+  });
+
+  var downloadUrl = URL.createObjectURL(response);
+  console.log(downloadUrl);
+  try {
+    browser.downloads.download({
+      url: downloadUrl,
+      filename: "trello_board.csv"
+    });
+    browser.pageAction.setIcon({
+      tabId: tabId,
+      path: "/assets/page-action/page-action-32.svg"
+    });
+    browser.notifications.create({
+      type: "basic",
+      title: "Board exported",
+      message: "Successfully downloaded your board as CSV."
+    });
+  } catch (e) {
+    console.error("TSP error: ", e);
   }
 }

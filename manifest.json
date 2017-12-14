@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
-  "version": "0.8",
+  "version": "0.9a",
 
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/christiankaindl/trello-super-powers",
@@ -13,10 +13,21 @@
   	"128": "assets/logo.svg"
   },
   "permissions": [
-  	"tabs", "storage", "https://trello.com/b/*/", "notifications"
+  	"tabs", "storage", "https://trello.com/b/*/", "notifications", "downloads"
   ],
   "background": {
   	"scripts": ["background.js"]
+  },
+  "page_action": {
+    "browser_style": true,
+    "default_icon": {
+      "16": "/assets/page-action/page-action-16.svg",
+      "19": "/assets/page-action/page-action-19.svg",
+      "32": "/assets/page-action/page-action-32.svg",
+      "38": "/assets/page-action/page-action-38.svg"
+    },
+  "default_title": "Export Trello board as CSV",
+  "default_popup": "/page-action/index.html"
   },
 
   "options_ui": {

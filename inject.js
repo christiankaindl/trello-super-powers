@@ -213,3 +213,58 @@ var features = {
   elem.setAttribute("id", "TSP-init");
   board.appendChild(elem);
 })();
+
+browser.runtime.onMessage.addListener(handleMessage);
+
+/*
+  We use PapaParse here, a JSON to CSV library (and vica versa). PapaParse is
+  injected by the background script, that is why we can use `Papa` namespace
+*/
+async function handleMessage(message) {
+  if (message.type === "fetch") {
+    let data,
+        {delimiter, includeArchived} = message.options;
+    data = await fetch(`${message.url}.json`, { credentials: "include" });
+    data = await data.json();
+    console.log(data);
+
+    var csvObj = [];
+    let counter = 0;
+    for (let i = 0; i < data.cards.length; i++) {
+      let card = data.cards[i];
+
+      if (card.closed && !includeArchived) {
+        console.log('SHOUT', i);
+        continue;
+      }
+      csvObj[counter] = {
+        name: card.name,
+        url: card.url,
+        shortUrl: card.shortUrl,
+        idShort: card.idShort,
+        description: card.desc,
+        labels: (() => {
+          let labelNames = [];
+          for (let j in card.labels) {
+            labelNames[j] = card.labels[j].name;
+          }
+          return labelNames.join(", ");
+        })(),
+        due: card.due
+      };
+
+      counter++;
+    }
+
+    data = await JSON.stringify(csvObj);
+
+    try {
+      data = Papa.unparse(data, {
+        delimiter: delimiter
+      });
+    } catch (e) {
+      console.error(e);
+    }
+    return new Blob([data], { type: "application/csv" });
+  }
+}

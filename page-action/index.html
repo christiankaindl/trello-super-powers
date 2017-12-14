@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Export Trello board as CSV</title>
+    <style media="screen">
+      #export-button {
+        /*background-color: #0060df;*/
+        color: white;
+        font-size: 16px;
+        height: 32px;
+        width: 132px;
+        text-align: center;
+        border-radius: 4px;
+        margin: 0;
+      }
+      .footer {
+        height: 64px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 8px 32px;
+      }
+
+      main {
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+      }
+      .input-description {
+        width: 30%;
+        margin-right: 8px;
+      }
+      .file-extension {
+        font-weight: bold;
+        color: lightgrey;
+      }
+      input[type="text"] {
+        width: 20%;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+
+      .radios {
+        align-self: flex-start;
+      }
+      .radios label {
+        padding: 8px;
+        display: block;
+      }
+      .input-description.delimiter {
+        align-self: flex-start;
+        padding-top: 8px;
+      }
+      hr {
+        border: 1px solid #eee;
+
+      }
+
+    </style>
+  </head>
+  <body>
+
+      <div class="panel">
+      <div id="download-entry" class="panel-section panel-section-header">
+        <img src="/assets/download-16.svg" class="icon-section-header" id="icon"/>
+        <div class="text-section-header" id="url">Export Trello board as CSV</div>
+      </div>
+
+      <main>
+        <div class="row delimiter">
+          <label class="input-description" for="file-name">File Name: </label>
+          <input id="file-name" type="text" name="file-name" value="CSV-export">
+          <span class="file-extension">.csv</span>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="input-description delimiter">Delimiter: </div>
+          <div class="radios">
+            <label for="delimiter-comma">
+              <input type="radio" id="delimiter-comma" name="delimiter" value="," checked>
+              , <i>(Comma)</i>
+            </label>
+            <label for="delimiter-semicolon">
+              <input type="radio" id="delimiter-semicolon" name="delimiter" value=";">
+              ; <i>(Semicolon)</i>
+            </label>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <input id="include-archived" type="checkbox" name="include-archived">
+          <label for="include-archived">Include Archived Cards</label>
+        </div>
+      </main>
+
+      <div class="footer">
+        <button id="export-button" class="browser-style default">Export</div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+
+  </body>
+</html>
