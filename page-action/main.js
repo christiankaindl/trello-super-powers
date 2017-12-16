@@ -1,6 +1,4 @@
-document.getElementById("export-button").addEventListener('click', handleSubmit);
-
-function handleSubmit() {
+async function handleSubmit() {
   function getFormData() {
     let data = {
       fileName: `${document.getElementById("file-name").value}.csv`,
@@ -9,6 +7,7 @@ function handleSubmit() {
     };
 
     console.log(data);
+    console.log("OKOKOK");
     return data;
   }
 
@@ -16,5 +15,11 @@ function handleSubmit() {
 
   data = getFormData();
 
-  browser.runtime.sendMessage({type: "exportCSV", data: data});
+  exportButton.setAttribute("disabled", "disabled");
+  await browser.runtime.sendMessage({type: "exportCSV", data: data});
+  exportButton.removeAttribute("disabled");
 }
+
+var exportButton = document.getElementById("export-button");
+
+exportButton.addEventListener('click', handleSubmit);

@@ -36,6 +36,7 @@
         margin-right: 8px;
       }
       .file-extension {
+        margin-left: 4px;
         font-weight: bold;
         color: lightgrey;
       }
@@ -60,6 +61,10 @@
         border: 1px solid #eee;
 
       }
+      button:disabled {
+        background-color: grey;
+        cursor: progress;
+      }
 
     </style>
   </head>
@@ -67,8 +72,8 @@
 
       <div class="panel">
       <div id="download-entry" class="panel-section panel-section-header">
-        <img src="/assets/download-16.svg" class="icon-section-header" id="icon"/>
-        <div class="text-section-header" id="url">Export Trello board as CSV</div>
+        <img src="/assets/page-action/download-16.svg" class="icon-section-header" id="icon"/>
+        <div class="text-section-header" id="url">Export Trello Board as CSV</div>
       </div>
 
       <main>

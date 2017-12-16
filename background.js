@@ -68,8 +68,6 @@ async function checkSettings() {
 browser.runtime.onMessage.addListener(handleMessage);
 
 async function handleMessage(message, sender) {
-  console.log("AAAAHHHH");
-  console.log(message);
   if (message.type === "notification") {
     browser.notifications.create({
       type: "basic",
@@ -91,11 +89,6 @@ async function handleMessage(message, sender) {
       currentWindow: true
     });
 
-    browser.pageAction.setIcon({
-      tabId: tabId,
-      path: "/assets/page-action/Spinner_test.gif"
-    });
-
     await browser.tabs.executeScript(tabId, { file: "papaparse.min.js" });
     var response = await browser.tabs.sendMessage(tabId, {
       url: url,
@@ -109,10 +102,6 @@ async function handleMessage(message, sender) {
       browser.downloads.download({
         url: downloadUrl,
         filename: data.fileName
-      });
-      browser.pageAction.setIcon({
-        tabId: tabId,
-        path: "/assets/page-action/page-action-32.svg"
       });
       browser.notifications.create({
         type: "basic",

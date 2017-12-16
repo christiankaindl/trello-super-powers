@@ -1,16 +1,16 @@
 {
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
-  "version": "0.9a",
+  "version": "0.9.1a",
 
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/christiankaindl/trello-super-powers",
   "icons": {
-    "16": "assets/logo_small.svg",
-  	"32": "assets/logo_small.svg",
-    "48": "assets/logo_small.svg",
-  	"64": "assets/logo.svg",
-  	"128": "assets/logo.svg"
+    "16": "assets/logos/logo_small.svg",
+  	"32": "assets/logos/logo_small.svg",
+    "48": "assets/logos/logo_small.svg",
+  	"64": "assets/logos/logo.svg",
+  	"128": "assets/logos/logo.svg"
   },
   "permissions": [
   	"tabs", "storage", "https://trello.com/b/*/", "notifications", "downloads"
