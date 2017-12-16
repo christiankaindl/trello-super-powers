@@ -223,48 +223,43 @@ browser.runtime.onMessage.addListener(handleMessage);
 async function handleMessage(message) {
   if (message.type === "fetch") {
     let data,
-        {delimiter, includeArchived} = message.options;
-    data = await fetch(`${message.url}.json`, { credentials: "include" });
-    data = await data.json();
-    console.log(data);
+      cards = [],
+      { delimiter = ",", includeArchived = false, tabUrl: boardUrl } = message;
 
-    var csvObj = [];
-    let counter = 0;
-    for (let i = 0; i < data.cards.length; i++) {
-      let card = data.cards[i];
+    data = await (await fetch(`${boardUrl}.json`, {
+      credentials: "include"
+    })).json();
 
-      if (card.closed && !includeArchived) {
-        console.log('SHOUT', i);
-        continue;
-      }
-      csvObj[counter] = {
-        name: card.name,
-        url: card.url,
-        shortUrl: card.shortUrl,
-        idShort: card.idShort,
-        description: card.desc,
-        labels: (() => {
-          let labelNames = [];
-          for (let j in card.labels) {
-            labelNames[j] = card.labels[j].name;
-          }
-          return labelNames.join(", ");
-        })(),
-        due: card.due
-      };
-
-      counter++;
-    }
-
-    data = await JSON.stringify(csvObj);
+    data.cards
+      .filter(card => (card.closed && includeArchived) || !card.closed)
+      .forEach((card, i) => {
+        cards[i] = {
+          name: card.name,
+          url: card.url,
+          shortUrl: card.shortUrl,
+          idShort: card.idShort,
+          description: card.desc,
+          labels: (() => {
+            let labelNames = [];
+            for (let j in card.labels) {
+              labelNames[j] = card.labels[j].name;
+            }
+            return labelNames.join(", ");
+          })(),
+          due: card.due
+        };
+      });
 
     try {
+      data = await JSON.stringify(cards);
+
       data = Papa.unparse(data, {
         delimiter: delimiter
       });
     } catch (e) {
       console.error(e);
     }
+
     return new Blob([data], { type: "application/csv" });
   }
 }

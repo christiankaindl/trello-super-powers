@@ -76,77 +76,56 @@ async function handleMessage(message, sender) {
       iconUrl: "/assets/logo.svg"
     });
   }
-  if (message.type === "download") {
-    let url = URL.createObjectURL(message.data);
-    console.info("Trying to download: ", url);
 
-    browser.downloads.download({ url: url, filename: "data.json" });
-  }
   if (message.type === "exportCSV") {
-    let {data} = message;
-    let [{ id: tabId, url }] = await browser.tabs.query({
+    if (!navigator.onLine) {
+      browser.notifications.create({
+        type: "basic",
+        title: "You are offline",
+        message:
+          "Trello Super Powers could not connect to the internet. Please check your connection and try again."
+      });
+
+      return;
+    }
+
+    let tabId, tabUrl, csvBlob, downloadUrl;
+    let { filename, delimiter, includeArchived } = message.data;
+
+    [{ id: tabId, url: tabUrl }] = await browser.tabs.query({
       active: true,
       currentWindow: true
     });
 
     await browser.tabs.executeScript(tabId, { file: "papaparse.min.js" });
-    var response = await browser.tabs.sendMessage(tabId, {
-      url: url,
+    csvBlob = await browser.tabs.sendMessage(tabId, {
       type: "fetch",
-      options: data
+      tabUrl,
+      delimiter,
+      includeArchived
     });
 
-    var downloadUrl = URL.createObjectURL(response);
+    downloadUrl = URL.createObjectURL(csvBlob);
 
     try {
       browser.downloads.download({
         url: downloadUrl,
-        filename: data.fileName
-      });
-      browser.notifications.create({
-        type: "basic",
-        title: "Board exported",
-        message: "Successfully downloaded your board as CSV."
+        filename: filename
       });
     } catch (e) {
       console.error("TSP error: ", e);
+
+      browser.notifications.create({
+        type: "basic",
+        title: "Export failed",
+        message: `Trello Super Powers could export your board. We're sorry. Error message: ${e}`
+      });
     }
-  }
-}
 
-// async function handlePageAction(e) {
-//   console.log("BLUB");
-//   browser.pageAction.setIcon({
-//     tabId: e.id,
-//     path: "/assets/page-action/Spinner_test.gif"
-//   });
-//   await browser.tabs.executeScript(e.id, { file: "papaparse.min.js" });
-//   exportToCSV(e.url, e.id);
-// }
-
-async function exportToCSV(url, tabId) {
-  var response = await browser.tabs.sendMessage(tabId, {
-    url: url,
-    type: "fetch"
-  });
-
-  var downloadUrl = URL.createObjectURL(response);
-  console.log(downloadUrl);
-  try {
-    browser.downloads.download({
-      url: downloadUrl,
-      filename: "trello_board.csv"
-    });
-    browser.pageAction.setIcon({
-      tabId: tabId,
-      path: "/assets/page-action/page-action-32.svg"
-    });
     browser.notifications.create({
       type: "basic",
       title: "Board exported",
       message: "Successfully downloaded your board as CSV."
     });
-  } catch (e) {
-    console.error("TSP error: ", e);
   }
 }
