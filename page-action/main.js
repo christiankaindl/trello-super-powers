@@ -15,3 +15,4 @@ async function handleSubmit() {
 var exportButton = document.getElementById("export-button");
 
 exportButton.addEventListener("click", handleSubmit);
+translate();
