@@ -13,8 +13,8 @@ try {
     injectStatus = "pending";
 
     try {
-      await browser.tabs.insertCSS({ file: "/enhancedStyles.css" });
-      await browser.tabs.executeScript({ file: "/inject.js" });
+      await browser.tabs.insertCSS({ file: "inject/enhancedStyles.css" });
+      await browser.tabs.executeScript({ file: "inject/inject.js" });
 
       browser.pageAction.show(id);
 
