@@ -54,5 +54,34 @@
   "injectIdNotificationBody": {
     "message": "Card ID saved to your clipboard.",
     "description": "Message body when a user clicks on a card ID."
+  },
+
+  "pageAction_exportToCSV_title": {
+    "message": "Export Trello Board as CSV",
+    "description": "Action of the Page Action (popup)."
+  },
+  "pageAction_exportToCSV_optionFileName_title": {
+    "message": "File Name",
+    "description": "Name of the option to choose a file name."
+  },
+  "pageAction_exportToCSV_optionDelimiter_title": {
+    "message": "Delimiter",
+    "description": "Name of the option to choose a delimiter (seperator)."
+  },
+  "pageAction_exportToCSV_optionDelimiter_comma": {
+    "message": "(Comma)",
+    "description": "Hint for the name of the character ','"
+  },
+  "pageAction_exportToCSV_optionDelimiter_semicolon": {
+    "message": "(Semicolon)",
+    "description": "Hint for the name of the character ';'"
+  },
+  "pageAction_exportToCSV_optionIncludeArchived_title": {
+    "message": "Include Archived Cards",
+    "description": "Name of the option to optionally inlcude also arcived cards."
+  },
+  "pageAction_exportToCSV_genericExport_title": {
+    "message": "Export",
+    "description": "Action to output something."
   }
 }
