@@ -55,33 +55,33 @@
     "message": "Karten-ID in die Zwischenablage gespeichert.",
     "description": "Message body when a user clicks on a card ID."
   },
-  
+
   "pageAction_exportToCSV_title": {
-    "message": "Export Trello Board as CSV",
+    "message": "Trello Board als CSV Exportieren",
     "description": "Action of the Page Action (popup)."
   },
   "pageAction_exportToCSV_optionFileName_title": {
-    "message": "File Name",
+    "message": "Dateiname",
     "description": "Name of the option to choose a file name."
   },
   "pageAction_exportToCSV_optionDelimiter_title": {
-    "message": "Delimiter",
+    "message": "Seperator",
     "description": "Name of the option to choose a delimiter (seperator)."
   },
   "pageAction_exportToCSV_optionDelimiter_comma": {
-    "message": "(Comma)",
+    "message": "(Komma)",
     "description": "Hint for the name of the character ','"
   },
   "pageAction_exportToCSV_optionDelimiter_semicolon": {
-    "message": "(Semicolon)",
+    "message": "(Semikolon)",
     "description": "Hint for the name of the character ';'"
   },
   "pageAction_exportToCSV_optionIncludeArchived_title": {
-    "message": "Include Archived Cards",
+    "message": "Archivierte Karten Inkludieren",
     "description": "Name of the option to optionally inlcude also arcived cards."
   },
   "pageAction_exportToCSV_genericExport_title": {
-    "message": "Export",
+    "message": "Exportieren",
     "description": "Action to output something."
   }
 }
