@@ -25,10 +25,7 @@ async function initialize() {
   }
 
   // Apply localized/translated strings
-  for (let i = 0; i < translateables.length; i++) {
-    let string = translateables[i].getAttribute("data-translate");
-    translateables[i].textContent = browser.i18n.getMessage(string);
-  }
+  translate();
 }
 
 initialize();
