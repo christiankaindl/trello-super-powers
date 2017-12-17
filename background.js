@@ -90,7 +90,7 @@ async function handleMessage(message, sender) {
     }
 
     let tabId, tabUrl, csvBlob, downloadUrl;
-    let { filename, delimiter, includeArchived } = message.data;
+    let { filename = 'CSV-export.csv', delimiter, includeArchived } = message.data;
 
     [{ id: tabId, url: tabUrl }] = await browser.tabs.query({
       active: true,
