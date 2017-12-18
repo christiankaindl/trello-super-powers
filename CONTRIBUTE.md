@@ -4,8 +4,8 @@ Thanks for considering supporting the development of Trello Super Powers!
 
 There are **2** ways to contribute to TSP:
 
-- [Translations][#translations]
-- [Code][#coding]
+- [Translations](#translations)
+- [Code](#coding)
 
 If at any time you need help you can always open an Issue on the GitHub page and someone will help you to get started.
 
