@@ -18,11 +18,21 @@ function gracefullyInject(feature) {
   feature();
 }
 
+/**
+* Wrapper for `browser.storage.local.get()`.
+*
+* @returns {object} An object with current settings.
+*/
 async function getSettings() {
   return await browser.storage.local.get();
 }
 
 var features = {
+  /**
+  * Initializes ID feature.
+  *
+  * @returns {promise}
+  */
   id() {
     return new Promise(function(resolve, reject) {
       let input = document.createElement("input");
@@ -63,6 +73,11 @@ var features = {
       resolve();
     });
   },
+  /**
+  * Initializes Compact Mode feature
+  *
+  * @returns {promise}
+  */
   compact() {
     return new Promise(async function(resolve, reject) {
       // if ((await browser.storage.local.get()).settings.compact == false ) {
@@ -100,6 +115,11 @@ var features = {
       resolve();
     });
   },
+  /**
+  * Initializes Resizable Lists feature
+  *
+  * @returns {promise}
+  */
   resize() {
     return new Promise(async function(resolve, reject) {
       var listWidth;
@@ -174,11 +194,17 @@ var features = {
       resolve();
     });
   },
+  /**
+  * Initializes visible label text feature
+  */
   label() {
     // CSS only feature
     console.info("TSP: feature 'label' injected");
     board.classList.add("TSP-label-enabled");
   },
+  /**
+  * Initializes number of cards feature
+  */
   numberOfCards() {
     // CSS only feature
     console.info("TSP: feature 'numberOfCards' injected");
@@ -219,6 +245,13 @@ browser.runtime.onMessage.addListener(handleMessage);
 /*
   We use PapaParse here, a JSON to CSV library (and vica versa). PapaParse is
   injected by the background script, that is why we can use `Papa` namespace
+*/
+
+/**
+* Message handler.
+*
+* @param {object} message Message from the Background Script.
+* @returns {Blob} Containing CSV data.
 */
 async function handleMessage(message) {
   if (message.type === "fetch") {

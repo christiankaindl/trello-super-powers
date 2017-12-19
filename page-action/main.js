@@ -1,3 +1,6 @@
+/**
+* Handle form submit. Gather input values and send them to the Background Script.
+*/
 async function handleSubmit() {
   let data;
 

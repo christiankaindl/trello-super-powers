@@ -1,5 +1,10 @@
 "use strict";
 
+/**
+* Update storage with changed settings
+*
+* @param {object} e 'onchange' event object
+*/
 async function updateStorage(e) {
   var setting = e.target.getAttribute("name"),
     value = e.target.checked;
@@ -13,6 +18,9 @@ async function updateStorage(e) {
   });
 }
 
+/**
+* Initialize settings page. Apply saved settings from storage and add evnt listener to the input elements.
+*/
 async function initialize() {
   var settings = await browser.storage.local.get(),
     inputs = document.getElementsByTagName("input"),

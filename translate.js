@@ -1,3 +1,8 @@
+/**
+* Translate an HTML page with the i18n API
+*
+* @param {string} property Name of the HTML attribute used for localization
+*/
 function translate(property = 'data-translate') {
   let translateables = document.querySelectorAll(`[${property}]`);
 

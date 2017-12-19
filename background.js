@@ -5,6 +5,13 @@ try {
   const trelloBoardURL = /\S+:\/\/\S*\.?trello\.com\/b\/\S+/;
   var injectStatus = undefined;
 
+  /**
+  * Checks whether or not a given url is a Trello board url.
+  *
+  * @param {number} id id of the tab the url is From
+  * @param {string} updateReason Reason why the function was called
+  * @param {object} state Properties of the tab
+  */
   async function urlCheck(id, updateReason, state) {
     if (!state.url.match(trelloBoardURL)) return;
 
@@ -67,7 +74,12 @@ async function checkSettings() {
 
 browser.runtime.onMessage.addListener(handleMessage);
 
-async function handleMessage(message, sender) {
+/**
+* Message handler for incomming messages
+*
+* @param {object} message Message from a Script, containing a 'type' property.
+*/
+async function handleMessage(message) {
   if (message.type === "notification") {
     browser.notifications.create({
       type: "basic",
