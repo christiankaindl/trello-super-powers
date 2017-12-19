@@ -1,52 +1,37 @@
 "use strict";
 console.clear();
 
-try {
-  const trelloBoardURL = /\S+:\/\/\S*\.?trello\.com\/b\/\S+/;
-  var injectStatus = undefined;
+const trelloBoardURL = /\S+:\/\/\S*\.?trello\.com\/b\/\S+/;
+var injectStatus = undefined;
 
-  /**
-  * Checks whether or not a given url is a Trello board url.
-  *
-  * @param {number} id id of the tab the url is From
-  * @param {string} updateReason Reason why the function was called
-  * @param {object} state Properties of the tab
-  */
-  async function urlCheck(id, updateReason, state) {
-    if (!state.url.match(trelloBoardURL)) return;
+/**
+ * Checks whether or not a given url is a Trello board url.
+ *
+ * @param {number} id id of the tab the url is From
+ * @param {string} updateReason Reason why the function was called
+ * @param {object} state Properties of the tab
+ */
+async function urlCheck(id, updateReason, state) {
+  if (!state.url.match(trelloBoardURL)) return;
+  if (injectStatus === "pending") return;
 
-    if (injectStatus == "pending") return;
+  injectStatus = "pending";
 
-    injectStatus = "pending";
+  try {
+    await browser.tabs.insertCSS({ file: "inject/enhancedStyles.css" });
+    await browser.tabs.executeScript({ file: "inject/inject.js" });
 
-    try {
-      await browser.tabs.insertCSS({ file: "inject/enhancedStyles.css" });
-      await browser.tabs.executeScript({ file: "inject/inject.js" });
+    browser.pageAction.show(id);
 
-      browser.pageAction.show(id);
-
-      injectStatus = "fullfilled";
-      console.info(`TSP: successfully injected 'inject.js' into ${state.url}`);
-    } catch (e) {
-      injectStatus = "rejected";
-      console.error(
-        `TSP Error. Could not inject 'inject.js' into ${state.url}: `,
-        e
-      );
-    }
+    injectStatus = "fullfilled";
+    console.info(`TSP: successfully injected 'inject.js' into ${state.url}`);
+  } catch (e) {
+    injectStatus = "rejected";
+    console.error(
+      `TSP Error. Could not inject 'inject.js' into ${state.url}: `,
+      e
+    );
   }
-
-  /* Trello uses AJAX loading and because of this when a board is loaded from
-	within the UI (not from URL) 'inject.js' won't be fired. To overcome this we
-	listen for URL changes initTrelloBoardand fire inizializations manually */
-  browser.tabs.onUpdated.addListener(urlCheck);
-
-  browser.runtime.onStartup.addListener(checkSettings);
-  browser.runtime.onInstalled.addListener(checkSettings);
-
-  console.info("Trello Super Powers WebExtension started successfully.");
-} catch (e) {
-  console.error("TSP Error: \n", e);
 }
 
 /**
@@ -75,10 +60,10 @@ async function checkSettings() {
 browser.runtime.onMessage.addListener(handleMessage);
 
 /**
-* Message handler for incomming messages
-*
-* @param {object} message Message from a Script, containing a 'type' property.
-*/
+ * Message handler for incomming messages
+ *
+ * @param {object} message Message from a Script, containing a 'type' property.
+ */
 async function handleMessage(message) {
   if (message.type === "notification") {
     browser.notifications.create({
@@ -102,7 +87,11 @@ async function handleMessage(message) {
     }
 
     let tabId, tabUrl, csvBlob, downloadUrl;
-    let { filename = 'CSV-export.csv', delimiter, includeArchived } = message.data;
+    let {
+      filename = "CSV-export.csv",
+      delimiter = ",",
+      includeArchived = false
+    } = message.data;
 
     [{ id: tabId, url: tabUrl }] = await browser.tabs.query({
       active: true,
@@ -141,3 +130,13 @@ async function handleMessage(message) {
     });
   }
 }
+
+/* Trello uses AJAX loading and because of this when a board is loaded from
+within the UI (not from URL) 'inject.js' won't be fired. To overcome this we
+listen for URL changes initTrelloBoardand fire inizializations manually */
+browser.tabs.onUpdated.addListener(urlCheck);
+
+browser.runtime.onStartup.addListener(checkSettings);
+browser.runtime.onInstalled.addListener(checkSettings);
+
+console.info("Trello Super Powers WebExtension started successfully.");
