@@ -279,6 +279,8 @@ async function handleMessage(message) {
             }
             return labelNames.join(", ");
           })(),
+          idList: card.idList,
+          idBoard: card.idBoard,
           due: card.due
         };
       });
