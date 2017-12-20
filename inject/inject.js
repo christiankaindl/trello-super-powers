@@ -263,7 +263,7 @@ async function handleMessage(message) {
       credentials: "include"
     })).json();
 
-    data.cards
+    await data.cards
       .filter(card => (card.closed && includeArchived) || !card.closed)
       .forEach((card, i) => {
         cards[i] = {
@@ -281,6 +281,15 @@ async function handleMessage(message) {
           })(),
           idList: card.idList,
           idBoard: card.idBoard,
+          listName: (() => {
+            function matchListId(list) {
+              return list.id === card.idList;
+            }
+
+            // Find the list that the current card is in
+            let list = data.lists.find(matchListId);
+            return list.name;
+          })(),
           due: card.due
         };
       });
