@@ -45,7 +45,9 @@
         flex-grow: 1;
         flex-shrink: 1;
       }
-
+      /* #file-name:invalid {
+        border: 2px solid red;
+      } */
       .radios {
         align-self: flex-start;
       }
@@ -76,10 +78,13 @@
         <div class="text-section-header" id="url" data-translate="pageAction_exportToCSV_title">Export Trello Board as CSV</div>
       </div>
 
+      <form>
+
+
       <main>
         <div class="row delimiter">
           <label class="input-description" for="file-name"><span data-translate="pageAction_exportToCSV_optionFileName_title">File Name</span>: </label>
-          <input id="file-name" type="text" name="file-name" value="CSV-export">
+          <input id="file-name" type="text" name="file-name" value="CSV-export" required minlength="1" maxlength="256">
           <span class="file-extension">.csv</span>
         </div>
         <hr>
@@ -104,8 +109,9 @@
       </main>
 
       <div class="footer">
-        <button id="export-button" class="browser-style default" data-translate="pageAction_exportToCSV_genericExport_title">Export</div>
+        <button type="submit" id="export-button" class="browser-style default" data-translate="pageAction_exportToCSV_genericExport_title">Export</div>
       </div>
+      </form>
     </div>
 
     <script src="/translate.js"></script>
