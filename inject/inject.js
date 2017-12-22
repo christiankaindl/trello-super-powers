@@ -257,7 +257,7 @@ async function handleMessage(message) {
   if (message.type === "fetch") {
     let data,
       cards = [],
-      { delimiter = ",", includeArchived = false, tabUrl: boardUrl } = message;
+      { delimiter = ";", includeArchived = false, tabUrl: boardUrl } = message;
 
     data = await (await fetch(`${boardUrl}.json`, {
       credentials: "include"
