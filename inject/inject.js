@@ -255,56 +255,61 @@ async function handleMessage(message) {
     injected by the background script, that is why we can use `Papa` namespace
   */
   if (message.type === "fetch") {
-    let data,
-      cards = [],
+    function formatData(card, i) {
+      return {
+        name: card.name,
+        url: card.url,
+        shortUrl: card.shortUrl,
+        idShort: card.idShort,
+        description: card.desc,
+        labels: (() => {
+          let labelNames = [];
+          for (let j in card.labels) {
+            labelNames[j] = card.labels[j].name;
+          }
+          return labelNames.join(", ");
+        })(),
+        idList: card.idList,
+        idBoard: card.idBoard,
+        listName: (() => {
+          function matchListId(list) {
+            return list.id === card.idList;
+          }
+
+          // Find the list that the current card is in
+          let list = boardData.lists.find(matchListId);
+          return list.name;
+        })(),
+        due: card.due
+      };
+    }
+
+    let boardData,
+      cardsData,
       { delimiter = ";", includeArchived = false, tabUrl: boardUrl } = message;
 
-    data = await (await fetch(`${boardUrl}.json`, {
+    // Fetch JSON from current Trello board
+    boardData = await fetch(`${boardUrl}.json`, {
       credentials: "include"
-    })).json();
+    });
+    boardData = await boardData.json();
 
-    await data.cards
+    // Pick only what we need and put it in `cardsData`
+    cardsData = boardData.cards;
+    cardsData = cardsData
       .filter(card => (card.closed && includeArchived) || !card.closed)
-      .forEach((card, i) => {
-        cards[i] = {
-          name: card.name,
-          url: card.url,
-          shortUrl: card.shortUrl,
-          idShort: card.idShort,
-          description: card.desc,
-          labels: (() => {
-            let labelNames = [];
-            for (let j in card.labels) {
-              labelNames[j] = card.labels[j].name;
-            }
-            return labelNames.join(", ");
-          })(),
-          idList: card.idList,
-          idBoard: card.idBoard,
-          listName: (() => {
-            function matchListId(list) {
-              return list.id === card.idList;
-            }
-
-            // Find the list that the current card is in
-            let list = data.lists.find(matchListId);
-            return list.name;
-          })(),
-          due: card.due
-        };
-      });
+      .map(formatData);
 
     try {
-      data = await JSON.stringify(cards);
-
-      data = Papa.unparse(data, {
+      cardsData = await JSON.stringify(cardsData);
+      cardsData = Papa.unparse(cardsData, {
         delimiter: delimiter
       });
     } catch (e) {
-      console.error(e);
+      console.error("U ERIOUS?", e);
     }
 
-    return new Blob([data], { type: "application/csv" });
+    return new Blob([cardsData], { type: "application/csv" });
   }
 }
 
