@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <title>Export Trello board as CSV</title>
     <style media="screen">
+      body {
+        min-width: 18rem;
+      }
       #export-button {
-        /*background-color: #0060df;*/
         color: white;
         font-size: 16px;
         height: 32px;
@@ -22,96 +24,84 @@
         padding: 8px 32px;
       }
 
-      main {
+      .main {
         padding: 24px;
         box-sizing: border-box;
       }
-      .row {
-        display: flex;
-        align-items: center;
-        min-height: 48px;
-      }
-      .input-description {
-        width: 30%;
-        margin-right: 8px;
-      }
-      .file-extension {
-        margin-left: 4px;
-        font-weight: bold;
-        color: lightgrey;
-      }
-      input[type="text"] {
-        width: 20%;
-        flex-grow: 1;
-        flex-shrink: 1;
-      }
-      /* #file-name:invalid {
-        border: 2px solid red;
-      } */
-      .radios {
-        align-self: flex-start;
-      }
-      .radios label {
-        padding: 8px;
-        display: block;
-      }
-      .input-description.delimiter {
-        align-self: flex-start;
-        padding-top: 8px;
-      }
-      hr {
-        border: 1px solid #eee;
 
-      }
       button:disabled {
         background-color: grey;
         cursor: progress;
+      }
+      label {
+        display: block;
+      }
+      .popup-heading {
+        font-weight: 200;
+        font-size: 1rem;
+        margin: 0;
+      }
+      input[type="text"] {
+        width: 100%;
+        display: block;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        border-bottom: 1px solid lightgrey;
+      }
+      .fat {
+        font-weight: bold;
+      }
+      .file-name {
+        display: flex;
+      }
+      .file-extension {
+        color: #ccc;
+        padding-left: 4px;
       }
 
     </style>
   </head>
   <body>
 
-      <div class="panel">
-      <div id="download-entry" class="panel-section panel-section-header">
-        <img src="/assets/page-action/download-16.svg" class="icon-section-header" id="icon"/>
-        <div class="text-section-header" id="url" data-translate="pageAction_exportToCSV_title">Export Trello Board as CSV</div>
+    <header>
+        <h1 class="popup-heading" id="url" data-translate="pageAction_exportToCSV_title">Export Trello Board as CSV</h1>
+    </header>
+
+    <form id="csv-export" class="main">
+      <label class="input-description" for="file-name">
+        <span class="fat" data-translate="pageAction_exportToCSV_optionFileName_title">File Name</span>:
+      </label>
+      <div class="file-name">
+        <input id="file-name" type="text" name="file-name" value="CSV-export" required>
+        <span class="fat file-extension">.csv</span>
       </div>
 
-      <form>
+      <br>
 
+      <div><span class="fat" data-translate="pageAction_exportToCSV_optionDelimiter_title">Delimiter</span>:</div>
+      <label for="delimiter-semicolon">
+        <input type="radio" id="delimiter-semicolon" name="delimiter" value=";" required checked>
+        ; <i data-translate="pageAction_exportToCSV_optionDelimiter_semicolon">(Semicolon)</i>
+      </label>
+      <label for="delimiter-comma">
+        <input type="radio" id="delimiter-comma" name="delimiter" value="," required>
+        , <i data-translate="pageAction_exportToCSV_optionDelimiter_comma">(Comma)</i>
+      </label>
 
-      <main>
-        <div class="row delimiter">
-          <label class="input-description" for="file-name"><span data-translate="pageAction_exportToCSV_optionFileName_title">File Name</span>: </label>
-          <input id="file-name" type="text" name="file-name" value="CSV-export" required minlength="1" maxlength="256">
-          <span class="file-extension">.csv</span>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="input-description delimiter"><span data-translate="pageAction_exportToCSV_optionDelimiter_title">Delimiter</span>: </div>
-          <div class="radios">
-            <label for="delimiter-semicolon">
-              <input type="radio" id="delimiter-semicolon" name="delimiter" value=";" checked>
-              ; <i data-translate="pageAction_exportToCSV_optionDelimiter_semicolon">(Semicolon)</i>
-            </label>
-            <label for="delimiter-comma">
-              <input type="radio" id="delimiter-comma" name="delimiter" value=",">
-              , <i data-translate="pageAction_exportToCSV_optionDelimiter_comma">(Comma)</i>
-            </label>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <input id="include-archived" type="checkbox" name="include-archived">
-          <label for="include-archived" data-translate="pageAction_exportToCSV_optionIncludeArchived_title">Include Archived Cards</label>
-        </div>
-      </main>
+      <br>
 
-      <div class="footer">
-        <button type="submit" id="export-button" class="browser-style default" data-translate="pageAction_exportToCSV_genericExport_title">Export</div>
-      </div>
-      </form>
+      <label for="include-archived">
+        <input id="include-archived" type="checkbox" name="include-archived">
+        <span class="fat" data-translate="pageAction_exportToCSV_optionIncludeArchived_title">Include Archived Cards</span>
+      </label>
+    </form>
+
+    <div class="footer">
+      <button form="csv-export"  id="export-button" class="browser-style default" data-translate="pageAction_exportToCSV_genericExport_title">Export</button>
     </div>
 
     <script src="/translate.js"></script>

@@ -2,6 +2,7 @@
  * Handle form submit. Gather input values and send them to the Background Script.
  */
 async function handleSubmit() {
+  console.log("I AM HERE");
   let data;
 
   data = {
@@ -15,7 +16,10 @@ async function handleSubmit() {
   exportButton.removeAttribute("disabled");
 }
 
-var exportButton = document.getElementById("export-button");
+let form = document.getElementById('csv-export'),
+    exportButton = document.getElementById("export-button");
 
-exportButton.addEventListener("click", handleSubmit);
+form.addEventListener('submit', handleSubmit);
+
+// exportButton.addEventListener("click", handleSubmit);
 translate();
