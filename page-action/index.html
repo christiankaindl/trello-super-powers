@@ -76,13 +76,13 @@
         <span class="fat" data-translate="pageAction_exportToCSV_optionFileName_title">File Name</span>:
       </label>
       <div class="file-name">
-        <input id="file-name" type="text" name="file-name" value="CSV-export" required>
+        <input id="file-name" title="File Name" type="text" name="file-name" value="CSV-export" pattern="[^\\/\?%\*:\|]*" required>
         <span class="fat file-extension">.csv</span>
       </div>
 
       <br>
 
-      <div><span class="fat" data-translate="pageAction_exportToCSV_optionDelimiter_title">Delimiter</span>:</div>
+      <div title="Delimiter"><span class="fat" data-translate="pageAction_exportToCSV_optionDelimiter_title">Delimiter</span>:</div>
       <label for="delimiter-semicolon">
         <input type="radio" id="delimiter-semicolon" name="delimiter" value=";" required checked>
         ; <i data-translate="pageAction_exportToCSV_optionDelimiter_semicolon">(Semicolon)</i>
