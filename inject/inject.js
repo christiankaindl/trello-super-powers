@@ -256,6 +256,13 @@ async function handleMessage(message) {
     injected by the background script, that is why we can use `Papa` namespace
   */
   if (message.type === "fetch") {
+
+    /**
+    * Format raw JSON data from the Trello board to an object used later for csv
+    * parsing
+    *
+    * @param {object} card Current card object from JSON data
+    */
     function formatData(card, i) {
       return {
         name: card.name,
@@ -303,11 +310,13 @@ async function handleMessage(message) {
 
     try {
       cardsData = await JSON.stringify(cardsData);
+
+      // `Papa.unparse` parses JSON data to CSV using the Papa Parse library
       cardsData = Papa.unparse(cardsData, {
         delimiter: delimiter
       });
     } catch (e) {
-      console.error("U ERIOUS?", e);
+      console.error("Could not parse JSON data: ", e);
     }
 
     return new Blob([cardsData], { type: "application/csv" });

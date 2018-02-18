@@ -99,6 +99,9 @@ async function handleMessage(message) {
     });
 
     await browser.tabs.executeScript(tabId, { file: "papaparse.min.js" });
+
+    // TODO: Don't use a content script for this operation. Do everything in the
+    // background script
     csvBlob = await browser.tabs.sendMessage(tabId, {
       type: "fetch",
       tabUrl,
@@ -106,9 +109,10 @@ async function handleMessage(message) {
       includeArchived
     });
 
+    // Create a file URL so we can download it
     downloadUrl = URL.createObjectURL(csvBlob);
 
-    try {
+    try { // Try downloading the CSV file
       browser.downloads.download({
         url: downloadUrl,
         filename: filename
