@@ -1,0 +1,87 @@
+{
+  "extensionName": {
+    "message": "Trello Super Powers",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Añade superpoderes a tu tablero de Trello. Redimensiona listas, visualiza etiquetas de texto, añade un modo compacto y mucho más...",
+    "description": "Description of the extension."
+  },
+  "settingsHeading": {
+    "message": "Ajustes",
+    "description": "Settings heading."
+  },
+  "settingsSavedNotificationTitle": {
+    "message": "Ajustes salvados",
+    "description": "Notification title when settings are updated."
+  },
+  "settingsSavedNotificationBody": {
+    "message": "Recarga tu tablero de Trello para que los cambios tengan efecto",
+    "description": "Instuctions for the user in order for the changes to take effect."
+  },
+  "settingsCompactTitle": {
+    "message": "Modo compacto",
+    "description": "Name of the Compact Mode feature."
+  },
+  "settingsCompactDescription": {
+    "message": "Añade un botón que rápidamente cambie al modo compacto. En este modo, las etiquetas, tags y demás elementos estarán ocultos, así te enfocarás solo en tus tareas.",
+    "description": "Description of the Compact Mode feature."
+  },
+  "settingsLabelTitle": {
+    "message": "Etiquetas de texto visibles",
+    "description": "Name of the visible label text feature."
+  },
+  "settingsLabelDescription": {
+    "message": "Muestra los textos de las etiquetas por defecto. Nota: Aunque Trello soporta este comportamiento, no está establecido por defecto y no se muestra tan bien con los estilos que tenemos en Trello Super Powers.",
+    "description": "Description of the visible label text feature."
+  },
+  "settingsIdTitle": {
+    "message": "IDs de las tarjetas al colocar el ratón por encima",
+    "description": "Name of the Card IDs on hover feature."
+  },
+  "settingsIdDescription": {
+    "message": "¡Haz click en los IDs para copiarlos! Entonces podrás pegarlos en un comentario y Trello mostrará automáticamente la correspondiente tarjeta.",
+    "description": "Description of the card IDs on hover feature."
+  },
+  "settingsNumberListTitle": {
+    "message": "Número de tarjetas por lista",
+    "description": "Name of the Number of cards per list feature."
+  },
+  "settingsNumberListDescription": {
+    "message": "Muestra un pequeño indicador en cada lista con el número de tarjeta que hay.",
+    "description": "Description of the cards per list feature."
+  },
+  "injectIdNotificationBody": {
+    "message": "ID de la tarjeta se copia a tu clipboard.",
+    "description": "Message body when a user clicks on a card ID."
+  },
+
+  "pageAction_exportToCSV_title": {
+    "message": "Exporta el tablero de Trello como CSV",
+    "description": "Action of the Page Action (popup)."
+  },
+  "pageAction_exportToCSV_optionFileName_title": {
+    "message": "Nombre de archivo",
+    "description": "Name of the option to choose a file name."
+  },
+  "pageAction_exportToCSV_optionDelimiter_title": {
+    "message": "Delimitador",
+    "description": "Name of the option to choose a delimiter (seperator)."
+  },
+  "pageAction_exportToCSV_optionDelimiter_comma": {
+    "message": "(Coma)",
+    "description": "Hint for the name of the character ','"
+  },
+  "pageAction_exportToCSV_optionDelimiter_semicolon": {
+    "message": "(Punto y coma)",
+    "description": "Hint for the name of the character ';'"
+  },
+  "pageAction_exportToCSV_optionIncludeArchived_title": {
+    "message": "Incluir tarjetas archivadas",
+    "description": "Name of the option to optionally inlcude also arcived cards."
+  },
+  "pageAction_exportToCSV_genericExport_title": {
+    "message": "Exportar",
+    "description": "Action to output something."
+  }
+}
