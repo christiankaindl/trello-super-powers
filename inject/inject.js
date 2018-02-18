@@ -37,6 +37,7 @@ var features = {
       let input = document.createElement("input");
 
       // Add dummy element so we can use the clipboard functionality
+      input.setAttribute('style', 'display: none;');
       document.getElementsByTagName("body")[0].appendChild(input);
 
       document.addEventListener("click", copyCardURL, true);
