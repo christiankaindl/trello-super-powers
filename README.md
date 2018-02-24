@@ -21,14 +21,14 @@ There are plenty of features waiting to be implemented, most notably Account int
 
 ## Contribute
 
-If you want to contribute to this project, that is awesome! I tried to comment the code as good as I can and optimize it for readability. Hints and tricks to get you started can be found in the [CONTRIBUTE.md](https://github.com/christiankaindl/trello-super-powers/blob/master/CONTRIBUTE.md) file.
+If you want to contribute to this project, that is awesome! I tried to comment the code as good as I can and optimize it for readability. Hints and tricks to get you started can be found in the [CONTRIBUTING.md](https://github.com/christiankaindl/trello-super-powers/blob/master/CONTRIBUTING.md) file.
 
 If you have something on your mind or need help, hop to the [issues](https://github.com/christiankaindl/trello-super-powers/issues) tab and ask your question. There are lots of friendly people who will gladly help you out.
 
 Quick jump to...
 
-- **[Translation help](https://github.com/christiankaindl/trello-super-powers/blob/master/CONTRIBUTE.md#translations)**
-- **[Coding help](https://github.com/christiankaindl/trello-super-powers/blob/master/CONTRIBUTE.md#coding)**
+- **[Translation help](https://github.com/christiankaindl/trello-super-powers/blob/master/CONTRIBUTING.md#translations)**
+- **[Coding help](https://github.com/christiankaindl/trello-super-powers/blob/master/CONTRIBUTING.md#coding)**
 
 ## License
 
