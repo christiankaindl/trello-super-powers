@@ -264,7 +264,8 @@ async function handleMessage(message) {
     * @param {object} card Current card object from JSON data
     */
     function formatData(card, i) {
-      return {
+      // Bring the information in the right format
+      let formattedCard = {
         name: card.name,
         url: card.url,
         shortUrl: card.shortUrl,
@@ -290,6 +291,8 @@ async function handleMessage(message) {
         })(),
         due: card.due
       };
+
+      return formattedCard;
     }
 
     let boardData,
@@ -312,6 +315,7 @@ async function handleMessage(message) {
       cardsData = await JSON.stringify(cardsData);
 
       // `Papa.unparse` parses JSON data to CSV using the Papa Parse library
+      // It also takes are of sanitization
       cardsData = Papa.unparse(cardsData, {
         delimiter: delimiter
       });
