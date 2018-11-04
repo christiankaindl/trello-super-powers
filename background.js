@@ -43,6 +43,9 @@ async function checkSettings() {
   if (settings["compactMode"] === undefined) {
     browser.storage.local.set({ compactMode: true });
   }
+  if (settings["compactModeByDefault"] === undefined) {
+    browser.storage.local.set({ compactModeByDefault: false });
+  }
   if (settings["numberOfCards"] === undefined) {
     browser.storage.local.set({ numberOfCards: true });
   }

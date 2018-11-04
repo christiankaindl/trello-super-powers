@@ -29,6 +29,12 @@
       float: left;
       width: 30vmin;
     }
+    input.secondary, label.secondary {
+      font-size: 1.3rem;
+    }
+    input.secondary {
+      margin-left: 1em;
+    }
     section {
       display: block;
       margin: 2rem 0;
@@ -57,6 +63,10 @@
         <div class="checkbox">
           <input id="trello-compact" type="checkbox" name="compactMode" checked>
           <label for="trello-compact"  data-translate="settingsCompactTitle">Compact Mode</label>
+          <div>
+            <input class="secondary" id="trello-compactByDefault" type="checkbox" name="compactModeByDefault" />
+            <label class="secondary" for="trello-compactByDefault">Enable automatically</label>
+          </div>
           <p data-translate="settingsCompactDescription">Adds a button that lets you quickly toggle Compact Mode. When in Compact Mode, tags, assignations, attachments and more are hidden, so you can focus on your tasks.</p>
         </div>
         <img class="reference-image" src="../assets/settings/compact.png" alt="Compact Mode feature">

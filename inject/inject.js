@@ -9,11 +9,11 @@ Inizialize Trello Super Powers features
 - number of cards per list
 */
 
-function gracefullyInject (feature) {
+function gracefullyInject (feature, args) {
   /** Takes a funtion and injects it
    * TODO: add error handling logic
    */
-  feature()
+  feature(args)
 }
 
 /**
@@ -80,7 +80,7 @@ var features = {
    *
    * @returns {promise}
    */
-  compact () {
+  compact (byDefault) {
     return new Promise(async function (resolve, reject) {
       function createCompactModeButton () {
         let parent, child
@@ -116,6 +116,8 @@ var features = {
 
       console.info("TSP: feature 'compact' injected")
       board.classList.add('TSP-compact-enabled')
+
+      byDefault && compactModeButton.click()
       resolve()
     })
   },
@@ -233,7 +235,7 @@ async function initializeFeatures () {
 
   // IDEA: Maybe a loop that iterates the 'features' object would be even easier
   if (settings.copyId) gracefullyInject(features.id)
-  if (settings.compactMode) gracefullyInject(features.compact)
+  if (settings.compactMode) gracefullyInject(features.compact, settings.compactModeByDefault)
   if (settings.labelText) gracefullyInject(features.label)
   if (settings.numberOfCards) gracefullyInject(features.numberOfCards)
   // Does not have a setting
