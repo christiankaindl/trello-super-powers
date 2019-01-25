@@ -328,7 +328,7 @@ async function handleMessage (message) {
   }
 }
 
-var board = document.getElementById('board')
+var board = document.getElementById('content')
 
 browser.runtime.onMessage.addListener(handleMessage)
 initializeFeatures()
