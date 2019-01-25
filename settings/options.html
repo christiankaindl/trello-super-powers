@@ -2,17 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TSP Options</title>
+    <title>Trello Super Powers - Preferences</title>
   </head>
   <style media="screen">
     section {
       width: 100%;
     }
+    h1 {
+      text-align: center;
+    }
     .checkbox {
       float: left;
-      width: 30%;
-      margin: 2rem;
-      margin-top: 0.4rem;
     }
     section::after {
       content: "";
@@ -26,8 +26,8 @@
       margin-left: 1rem;
     }
     .reference-image {
-      float: left;
-      width: 30vmin;
+      width: 250px;
+      flex-shrink: 0;
     }
     input.secondary, label.secondary {
       font-size: 1.3rem;
@@ -36,12 +36,17 @@
       margin-left: 1em;
     }
     section {
-      display: block;
-      margin: 2rem 0;
+      align-items: start;
+      display: flex;
+      border-radius: 7px;
+      padding: 1.5rem;
+    }
+    section:nth-child(even) {
+      background-color: #fafafa;
     }
   </style>
   <body>
-    <h1 data-translate="settingsHeading">Settings</h1>
+    <h1 data-translate="settingsHeading">Preferences</h1>
     <form class="TSP-settings">
       <section>
         <div class="checkbox">
