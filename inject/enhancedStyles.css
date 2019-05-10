@@ -61,10 +61,6 @@
   vertical-align: top;
   white-space: nowrap;
 }
-.list-wrapper {
-  max-width: 400px;
-  min-width: 150px;
-}
 .list-card {
   max-width: none;
   min-width: none;
