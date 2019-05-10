@@ -91,8 +91,7 @@ var features = {
         parent.setAttribute('title', 'Toggle Compact Mode')
 
         child = document.createElement('span')
-        // Apply Trello button class. NOTE: Provided by Trello itself
-        child.setAttribute('class', 'board-header-btn-text')
+        child.setAttribute('class', 'board-header-btn-text') // The `board-header-btn-text` class is provided by Trello itself
         child.textContent = browser.i18n.getMessage('settingsCompactTitle')
 
         parent.appendChild(child)
@@ -199,7 +198,7 @@ var features = {
         lists[i].parentElement.insertBefore(resizeElem, lists[i])
       }
 
-      console.log("TSP: feature 'resize' enabled")
+      console.info("TSP: feature 'resize' injected")
       resolve()
     })
   },
@@ -224,12 +223,29 @@ var features = {
 /**
  * Initialize and inject all features.
  */
+let initAttemps = 0
 async function initializeFeatures () {
   // Already injected
-  if (document.getElementById('TSP-init')) return
+  if (document.getElementById('TSP-injected')) {
+    console.info('[Trello Super Powers] Returned early. Add-on was already injected.')
+    return
+  }
+
+  initAttemps++
+  if (initAttemps >= 3) {
+    console.error('[Trello Super Powers] Could not initialize features. Try reloading the page, or if it keeps happening submit an issue at https://github.com/christiankaindl/trello-super-powers/issues')
+    return
+  }
 
   // Trello board not yet ready
-  if (!board) return
+  if (!board) {
+    console.info('[Trello Super Powers] Board not yet ready. Trying again in 2 seconds.')
+    window.setTimeout(initializeFeatures, 2000)
+    return
+  }
+  let elem = document.createElement('span')
+  elem.setAttribute('id', 'TSP-injected')
+  board.appendChild(elem)
 
   let settings = await getSettings()
 
@@ -240,10 +256,6 @@ async function initializeFeatures () {
   if (settings.numberOfCards) gracefullyInject(features.numberOfCards)
   // Does not have a setting
   gracefullyInject(features.resize)
-
-  let elem = document.createElement('span')
-  elem.setAttribute('id', 'TSP-init')
-  board.appendChild(elem)
 }
 
 /**
