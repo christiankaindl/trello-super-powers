@@ -37,6 +37,10 @@
   },
   "settingsIdTitle": {
     "message": "Karten-IDs",
+    "description": "Show the Card IDs always."
+  },
+  "settingsIdTitleHover": {
+    "message": "Zeige Karten-IDs beim Bewegen der Maus über",
     "description": "Name of the Card IDs on hover feature."
   },
   "settingsIdDescription": {

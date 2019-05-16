@@ -51,7 +51,11 @@
       <section>
         <div class="checkbox">
           <input id="trello-id" type="checkbox" name="copyId" checked>
-          <label for="trello-id" data-translate="settingsIdTitle">Card IDs on hover</label>
+          <label for="trello-id" data-translate="settingsIdTitle">Show card ID</label>
+          <div>
+            <input class="secondary" id="trello-id-hover" type="checkbox" name="copyIdHover" />
+            <label class="secondary" for="trello-id-hover" data-translate="settingsIdTitleHover" >Show only on hover</label>
+          </div>
           <p data-translate="settingsIdDescription">Click on IDs to save them to your clipboard! Paste them in a comment and Trello will automatically show the corresponding card.</p>
         </div>
         <img class="reference-image" src="../assets/settings/id.png" alt="">

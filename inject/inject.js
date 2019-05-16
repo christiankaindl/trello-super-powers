@@ -32,7 +32,7 @@ var features = {
    *
    * @returns {promise}
    */
-  id () {
+  id (onHover) {
     return new Promise(function (resolve, reject) {
       let input = document.createElement('input')
 
@@ -71,7 +71,11 @@ var features = {
       }
 
       console.info("TSP: feature 'id' injected")
-      board.classList.add('TSP-id-enabled')
+      if (onHover) {
+        board.classList.add('TSP-id-enabled-hover')
+      } else {
+        board.classList.add('TSP-id-enabled')
+      }
       resolve()
     })
   },
@@ -250,7 +254,7 @@ async function initializeFeatures () {
   let settings = await getSettings()
 
   // IDEA: Maybe a loop that iterates the 'features' object would be even easier
-  if (settings.copyId) gracefullyInject(features.id)
+  if (settings.copyId) gracefullyInject(features.id, settings.copyIdHover)
   if (settings.compactMode) gracefullyInject(features.compact, settings.compactModeByDefault)
   if (settings.labelText) gracefullyInject(features.label)
   if (settings.numberOfCards) gracefullyInject(features.numberOfCards)

@@ -36,7 +36,11 @@
     "description": "Description of the visible label text feature."
   },
   "settingsIdTitle": {
-    "message": "Card IDs on hover",
+    "message": "Show card ID",
+    "description": "Show the Card IDs always."
+  },
+  "settingsIdTitleHover": {
+    "message": "Show only on hover",
     "description": "Name of the Card IDs on hover feature."
   },
   "settingsIdDescription": {

@@ -13,13 +13,25 @@
 }
 
 /*==== CARD ID ====*/
-.TSP-id-enabled .active-card .card-short-id {
+.TSP-id-enabled .card-short-id {
   display: inline;
   margin-right: 5px;
   color: #333;
   font-weight: bold;
 }
+
 .TSP-id-enabled .card-short-id:hover {
+  color: grey;
+}
+
+.TSP-id-enabled-hover .active-card .card-short-id {
+  display: inline;
+  margin-right: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+.TSP-id-enabled-hover .card-short-id:hover {
   color: grey;
 }
 
