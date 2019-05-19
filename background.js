@@ -55,8 +55,8 @@ async function checkSettings () {
   if (settings['copyId'] === undefined) {
     browser.storage.local.set({ copyId: true })
   }
-  if (settings['copyIdHover'] === undefined) {
-    browser.storage.local.set({ copyId: true })
+  if (settings['copyId_onlyShowOnHover'] === undefined) {
+    browser.storage.local.set({ copyId_onlyShowOnHover: true })
   }
   if (settings['list'] === undefined) {
     browser.storage.local.set({ list: { width: 270 } })

@@ -36,10 +36,6 @@
     "description": "Description of the visible label text feature."
   },
   "settingsIdTitle": {
-    "message": "Mostrar IDs de las tarjetas",
-    "description": "Show the Card IDs always."
-  },
-  "settingsIdTitleHover": {
     "message": "IDs de las tarjetas al colocar el ratón por encima",
     "description": "Name of the Card IDs on hover feature."
   },

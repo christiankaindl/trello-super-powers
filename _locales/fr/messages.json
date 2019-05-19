@@ -36,10 +36,6 @@
     "description": "Description of the visible label text feature."
   },
   "settingsIdTitle": {
-    "message": "Montrer Numéro des cartes",
-    "description": "Show the Card IDs always."
-  },
-  "settingsIdTitleHover": {
     "message": "Numéro des cartes au survol",
     "description": "Name of the Card IDs on hover feature."
   },

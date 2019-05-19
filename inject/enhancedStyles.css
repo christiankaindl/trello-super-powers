@@ -24,15 +24,11 @@
   color: grey;
 }
 
-.TSP-id-enabled-hover .active-card .card-short-id {
-  display: inline;
-  margin-right: 5px;
-  color: #333;
-  font-weight: bold;
+.TSP-id-enabled.onlyShowOnHover .card-short-id {
+  display: none;
 }
-
-.TSP-id-enabled-hover .card-short-id:hover {
-  color: grey;
+.TSP-id-enabled.onlyShowOnHover .active-card .card-short-id {
+  display: inline;
 }
 
 /*==== CARDS PER LIST ====*/
