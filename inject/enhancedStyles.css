@@ -11,6 +11,9 @@
   min-width: 16px;
   max-width: 100%;
 }
+.TSP-label-enabled .list-card-labels .card-label > span {
+  display: inline;
+}
 
 /*==== CARD ID ====*/
 .TSP-id-enabled .card-short-id {
