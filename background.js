@@ -2,7 +2,7 @@
 console.clear()
 
 const trelloBoardURL = /\S+:\/\/\S*\.?trello\.com\/b\/\S+/
-var injectStatus = undefined
+var injectStatus = null
 
 /**
  * Checks whether or not a given url is a Trello board url.
@@ -12,16 +12,15 @@ var injectStatus = undefined
  * @param {object} state Properties of the tab
  */
 async function urlCheck (id, updateReason, state) {
-  if (!state.url.match(trelloBoardURL)) return
+  if (!trelloBoardURL.test(state.url)) return
   if (injectStatus === 'pending') return
 
   injectStatus = 'pending'
 
   try {
-    await browser.tabs.insertCSS({ file: 'inject/enhancedStyles.css' })
-    await browser.tabs.executeScript({ file: 'inject/inject.js' })
-
-    browser.pageAction.show(id)
+    await browser.tabs.insertCSS(id, { file: 'inject/enhancedStyles.css' })
+    await browser.tabs.executeScript(id, { file: 'browser-polyfill.min.js' })
+    await browser.tabs.executeScript(id, { file: 'inject/inject.js' })
 
     injectStatus = 'fullfilled'
     console.info(`TSP: successfully injected 'inject.js' into ${state.url}`)
