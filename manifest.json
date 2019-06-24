@@ -16,7 +16,11 @@
   	"tabs", "storage", "https://trello.com/b/*/", "notifications", "downloads"
   ],
   "background": {
-  	"scripts": ["background.js"]
+  	"scripts": [
+      "browser-polyfill.min.js",
+      "papaparse.min.js",
+      "background.js"
+    ]
   },
   "page_action": {
     "browser_style": true,
