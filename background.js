@@ -98,24 +98,35 @@ async function handleMessage (message) {
       includeArchived = false
     } = message.data;
 
-    [{ id: tabId, url: tabUrl }] = await browser.tabs.query({
+    // For some reason borwser.tabs.getCurrent() didn't work. But don't know why anymore.
+    let [{ id: tabId, url: tabUrl }] = await browser.tabs.query({
       active: true,
       currentWindow: true
     })
 
-    await browser.tabs.executeScript(tabId, { file: 'papaparse.min.js' })
+    let downloadUrl
 
-    // TODO: Don't use a content script for this operation. Do everything in the
-    // background script
-    csvBlob = await browser.tabs.sendMessage(tabId, {
+    try {
+      let cardsData = await browser.tabs.sendMessage(tabId, {
       type: 'fetch',
       tabUrl,
       delimiter,
       includeArchived
     })
 
-    // Create a file URL so we can download it
-    downloadUrl = URL.createObjectURL(csvBlob)
+      // `Papa.unparse` parses JSON data to CSV using the Papa Parse library
+      // It also takes are of sanitization
+      cardsData = Papa.unparse(cardsData, {
+        delimiter: delimiter
+      })
+
+      downloadUrl = URL.createObjectURL(new Blob(
+          [ cardsData ],
+          { type: 'application/csv' }
+        ))
+    } catch (error) {
+      console.error('damn. [Trello Super Powers] Could not create CSV file --> ', error)
+    }
 
     try { // Try downloading the CSV file
       browser.downloads.download({
