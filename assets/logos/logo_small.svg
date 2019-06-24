@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32.000001 32">
-  <g transform="matrix(.88295 0 0 -.88295 -427.49880864 245.99033894)">
-    <rect width="48" height="48" x="6e-7" y="-48" fill="#ffe788" ry="19.661018" transform="matrix(.75505 0 0 -.75505 484.17241 242.35908)"/>
-    <path fill="#005eff" d="M511.50331 274.91565l-16.91007-17.17408 5.23642-.33068-2.38144-13.21238 14.1389 15.63573-4.61239.29068z"/>
-    <path fill="#ffd840" stroke="#005eff" stroke-width=".56628513" d="M510.33863 276.62826l-16.91007-17.17408 5.23641-.33069-2.38144-13.21237 14.13891 15.63572-4.6124.29068z"/>
-    <path fill="#005eff" d="M495.97852 245.28906l2.46093 13.65821-5.43945.34375 17.20312 17.4707.31836-.18945-4.45898-14.56055 4.76562-.29883zm.61132 1.24414l13.42774 14.84961-4.46094.2793 4.37109 14.27734-16.07031-16.32031 5.0332-.31836z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal" white-space="normal"/>
-  </g>
-</svg>
