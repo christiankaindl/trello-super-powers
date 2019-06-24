@@ -40,11 +40,5 @@
     "page": "settings/options.html"
   },
 
-  "applications": {
-    "gecko": {
-      "id": "{e8a71c3b-3deb-4ab3-834a-5c0aee943847}",
-      "strict_min_version": "52.0"
-    }
-  },
   "default_locale": "en"
 }
