@@ -23,7 +23,6 @@
     ]
   },
   "page_action": {
-    "browser_style": true,
     "default_icon": {
       "16": "assets/logos/logo_16.png",
       "19": "assets/logos/logo_19.png",
@@ -38,8 +37,7 @@
   },
 
   "options_ui": {
-    "page": "settings/options.html",
-    "browser_style": true
+    "page": "settings/options.html"
   },
 
   "applications": {
