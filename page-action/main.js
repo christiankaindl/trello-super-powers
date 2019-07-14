@@ -2,7 +2,6 @@
  * Handle form submit. Gather input values and send them to the Background Script.
  */
 async function handleSubmit() {
-  console.log("I AM HERE");
   let data;
 
   data = {
@@ -12,7 +11,11 @@ async function handleSubmit() {
   };
 
   exportButton.setAttribute("disabled", "disabled");
-  await browser.runtime.sendMessage({ type: "exportCSV", data: data });
+  try {
+    await browser.runtime.sendMessage({ type: "exportCSV", data: data })
+  } catch (error) {
+    console.error('[Trello Super Powers] Error in message handler --> ', error)
+  }
   exportButton.removeAttribute("disabled");
 }
 

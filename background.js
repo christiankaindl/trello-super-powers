@@ -2,7 +2,7 @@
 console.clear()
 
 const trelloBoardURL = /\S+:\/\/\S*\.?trello\.com\/b\/\S+/
-var injectStatus = undefined
+var injectStatus = null
 
 /**
  * Checks whether or not a given url is a Trello board url.
@@ -12,16 +12,15 @@ var injectStatus = undefined
  * @param {object} state Properties of the tab
  */
 async function urlCheck (id, updateReason, state) {
-  if (!state.url.match(trelloBoardURL)) return
+  if (!trelloBoardURL.test(state.url)) return
   if (injectStatus === 'pending') return
 
   injectStatus = 'pending'
 
   try {
-    await browser.tabs.insertCSS({ file: 'inject/enhancedStyles.css' })
-    await browser.tabs.executeScript({ file: 'inject/inject.js' })
-
-    browser.pageAction.show(id)
+    await browser.tabs.insertCSS(id, { file: 'inject/enhancedStyles.css' })
+    await browser.tabs.executeScript(id, { file: 'browser-polyfill.min.js' })
+    await browser.tabs.executeScript(id, { file: 'inject/inject.js' })
 
     injectStatus = 'fullfilled'
     console.info(`TSP: successfully injected 'inject.js' into ${state.url}`)
@@ -99,24 +98,35 @@ async function handleMessage (message) {
       includeArchived = false
     } = message.data;
 
-    [{ id: tabId, url: tabUrl }] = await browser.tabs.query({
+    // For some reason borwser.tabs.getCurrent() didn't work. But don't know why anymore.
+    let [{ id: tabId, url: tabUrl }] = await browser.tabs.query({
       active: true,
       currentWindow: true
     })
 
-    await browser.tabs.executeScript(tabId, { file: 'papaparse.min.js' })
+    let downloadUrl
 
-    // TODO: Don't use a content script for this operation. Do everything in the
-    // background script
-    csvBlob = await browser.tabs.sendMessage(tabId, {
+    try {
+      let cardsData = await browser.tabs.sendMessage(tabId, {
       type: 'fetch',
       tabUrl,
       delimiter,
       includeArchived
     })
 
-    // Create a file URL so we can download it
-    downloadUrl = URL.createObjectURL(csvBlob)
+      // `Papa.unparse` parses JSON data to CSV using the Papa Parse library
+      // It also takes are of sanitization
+      cardsData = Papa.unparse(cardsData, {
+        delimiter: delimiter
+      })
+
+      downloadUrl = URL.createObjectURL(new Blob(
+          [ cardsData ],
+          { type: 'application/csv' }
+        ))
+    } catch (error) {
+      console.error('damn. [Trello Super Powers] Could not create CSV file --> ', error)
+    }
 
     try { // Try downloading the CSV file
       browser.downloads.download({

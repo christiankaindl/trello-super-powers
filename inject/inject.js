@@ -1,4 +1,5 @@
 'use strict'
+var initAttemps = 0
 
 /*
 Inizialize Trello Super Powers features
@@ -311,9 +312,9 @@ async function handleMessage (message) {
       return formattedCard
     }
 
-    let boardData,
-      cardsData,
-      { delimiter = ';', includeArchived = false, tabUrl: boardUrl } = message
+    let boardData
+    let cardsData
+    let { includeArchived = false, tabUrl: boardUrl } = message
 
     // Fetch JSON from current Trello board
     boardData = await fetch(`${boardUrl}.json`, {
@@ -323,23 +324,18 @@ async function handleMessage (message) {
 
     // Pick only what we need and put it in `cardsData`
     cardsData = boardData.cards
-    cardsData = cardsData
       .filter(card => (card.closed && includeArchived) || !card.closed)
       .map(formatData)
 
     try {
-      cardsData = await JSON.stringify(cardsData)
-
-      // `Papa.unparse` parses JSON data to CSV using the Papa Parse library
-      // It also takes are of sanitization
-      cardsData = Papa.unparse(cardsData, {
-        delimiter: delimiter
-      })
-    } catch (e) {
-      console.error('Could not parse JSON data: ', e)
+      cardsData = JSON.stringify(cardsData)
+    } catch (error) {
+      console.error('[Trello Super Powers] Could not parse JSON data --> ', error)
     }
 
-    return new Blob([cardsData], { type: 'application/csv' })
+    return new Promise(function (resolve) {
+      resolve(cardsData)
+      })
   }
 }
 

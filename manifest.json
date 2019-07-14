@@ -6,40 +6,39 @@
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/christiankaindl/trello-super-powers",
   "icons": {
-    "16": "assets/logos/logo_small.svg",
-  	"32": "assets/logos/logo_small.svg",
-    "48": "assets/logos/logo_small.svg",
-  	"64": "assets/logos/logo.svg",
-  	"128": "assets/logos/logo.svg"
+    "16": "assets/logos/logo_16.png",
+    "32": "assets/logos/logo_32.png",
+  	"64": "assets/logos/logo_64.png",
+  	"128": "assets/logos/logo_128.png",
+    "256": "assets/logos/logo_256.png"
   },
   "permissions": [
   	"tabs", "storage", "https://trello.com/b/*/", "notifications", "downloads"
   ],
   "background": {
-  	"scripts": ["background.js"]
+  	"scripts": [
+      "browser-polyfill.min.js",
+      "papaparse.min.js",
+      "background.js"
+    ]
   },
   "page_action": {
-    "browser_style": true,
     "default_icon": {
-      "16": "/assets/page-action/page-action-16.svg",
-      "19": "/assets/page-action/page-action-19.svg",
-      "32": "/assets/page-action/page-action-32.svg",
-      "38": "/assets/page-action/page-action-38.svg"
+      "16": "assets/logos/logo_16.png",
+      "19": "assets/logos/logo_19.png",
+      "32": "assets/logos/logo_32.png",
+      "38": "assets/logos/logo_38.png",
+      "64": "assets/logos/logo_64.png",
+      "128": "assets/logos/logo_128.png",
+      "256": "assets/logos/logo_256.png"
     },
   "default_title": "Export Trello board as CSV",
   "default_popup": "/page-action/index.html"
   },
 
   "options_ui": {
-    "page": "settings/options.html",
-    "browser_style": true
+    "page": "settings/options.html"
   },
 
-  "applications": {
-    "gecko": {
-      "id": "{e8a71c3b-3deb-4ab3-834a-5c0aee943847}",
-      "strict_min_version": "52.0"
-    }
-  },
   "default_locale": "en"
 }
