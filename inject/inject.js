@@ -124,6 +124,21 @@ var features = {
     })
   },
   /**
+   * Initializes "Hide 'Add new List'-Button" feature
+   *
+   * @returns {promise}
+   */
+  hideAddNewList () {
+    return new Promise(async function (resolve, reject) {
+      let addNewListElement = document.getElementsByClassName('js-add-list')[0]
+      addNewListElement.classList.toggle('hide-element')
+
+      console.info("TSP: feature 'Hide Add new List' injected")
+
+      resolve()
+    })
+  },
+  /**
    * Initializes Resizable Lists feature
    *
    * @returns {promise}
@@ -257,6 +272,7 @@ async function initializeFeatures () {
   if (settings.compactMode) gracefullyInject(features.compact, settings.compactModeByDefault)
   if (settings.labelText) gracefullyInject(features.label)
   if (settings.numberOfCards) gracefullyInject(features.numberOfCards)
+  if (settings.hideAddNewList) gracefullyInject(features.hideAddNewList)
   // Does not have a setting
   gracefullyInject(features.resize)
 }

@@ -13,6 +13,7 @@ Trello Super Powers implements some small yet useful enhancements into your ever
 - Compact Mode: Removes all clutter if you want to focus
 - Resizable lists: imply click and drag to adjust the size of your Trello lists
 - See at a glance how many cards are in each list
+- Option to hide "Add new List"-Element
 
 Also you can find explanation of these features and a way to turn them off in the settings of the Add-on ('about:addons' in your address bar or 'Add-Ons' in the hamburger menu).
 
