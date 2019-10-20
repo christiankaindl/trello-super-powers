@@ -32,7 +32,7 @@
     "description": "Name of the 'Hide Add New List' feature."
   },
   "settingsHideAddNewListDescription": {
-    "message": "Versteckt den \"Eine weitere Liste hinzufügen\"-Button",
+    "message": "Versteckt die Spalte mit dem \"Eine weitere Liste hinzufügen\"-Button und spart dadurch Platz. Du kannst weiterhin neue Listen hinzufügen, indem du einen Doppelklick auf eine freie Fläche machst.",
     "description": "Description of the 'Hide Add New List' feature."
   },
   "settingsLabelTitle": {
