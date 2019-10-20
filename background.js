@@ -61,6 +61,9 @@ async function checkSettings () {
   if (settings['list'] === undefined) {
     browser.storage.local.set({ list: { width: 270 } })
   }
+  if (settings['hideAddNewList'] === undefined) {
+    browser.storage.local.set({ hideAddNewList: false })
+  }
 }
 
 browser.runtime.onMessage.addListener(handleMessage)
