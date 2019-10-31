@@ -76,3 +76,8 @@
   max-width: none;
   min-width: none;
 }
+
+/*==== HIDE ELEMENT ====*/
+.hide-element {
+  display: none;
+}

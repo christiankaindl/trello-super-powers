@@ -27,6 +27,14 @@
     "message": "Adds a button that lets you quickly toggle Compact Mode. When in Compact Mode, tags, assignations, attachments and more are hidden, so you can focus on your tasks.",
     "description": "Description of the Compact Mode feature."
   },
+  "settingsHideAddNewListTitle": {
+    "message": "Hide 'Add another list'",
+    "description": "Name of the 'Hide Add New List' feature."
+  },
+  "settingsHideAddNewListDescription": {
+    "message": "This hides the additional column with the 'Add another list' button and saves horizontal space. You can still create new lists by double clicking on an empty area on the board.",
+    "description": "Description of the 'Hide Add New List' feature."
+  },
   "settingsLabelTitle": {
     "message": "Visible label text",
     "description": "Name of the visible label text feature."

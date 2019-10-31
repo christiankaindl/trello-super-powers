@@ -27,6 +27,14 @@
     "message": "Fügt einen Button hinzu, der dich bequem den Kompakt-Modus aktivieren/deaktivieren lässt. Wenn aktiv, werden Tags, zugewiesene Menschen, Anhänge und mehr ausgeblendet. so kannst Du dich auf das konzentrieren, was wirklich wichtig ist.",
     "description": "Description of the Compact Mode feature."
   },
+  "settingsHideAddNewListTitle": {
+    "message": "Verstecke \"Eine weitere Liste hinzufügen\"",
+    "description": "Name of the 'Hide Add New List' feature."
+  },
+  "settingsHideAddNewListDescription": {
+    "message": "Versteckt die Spalte mit dem \"Eine weitere Liste hinzufügen\"-Button und spart dadurch Platz. Du kannst weiterhin neue Listen hinzufügen, indem du einen Doppelklick auf eine freie Fläche machst.",
+    "description": "Description of the 'Hide Add New List' feature."
+  },
   "settingsLabelTitle": {
     "message": "Sichtbarer Label-Text",
     "description": "Name of the visible label text feature."
