@@ -5,48 +5,42 @@
     <title>Trello Super Powers - Preferences</title>
   </head>
   <style media="screen">
-    section {
-      width: 100%;
-    }
-    h1 {
-      text-align: center;
-    }
-    .checkbox {
-      float: left;
-    }
-    section::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
     .checkbox input, .checkbox label {
-      font-size: 1.6rem;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    .checkbox input {
+      margin-right: .25em;
+      margin-left: 0;
     }
     .checkbox p {
-      margin-left: 1rem;
+      color: rgba(0, 0, 0, .75);
+      margin-bottom: 0;
     }
     .reference-image {
-      width: 250px;
-      flex-shrink: 0;
+      width: 100%;
     }
     input.secondary, label.secondary {
-      font-size: 1.3rem;
+      font-weight: normal;
     }
     input.secondary {
-      margin-left: 1em;
+      margin-left: 1.5em;
+      margin-top: .5em;
     }
     section {
-      align-items: start;
-      display: flex;
-      border-radius: 7px;
-      padding: 1.5rem;
+      width: 100%;
+      margin: 1.5em 0;
+      border-radius: .75em;
+      padding: 1.5em;
+      display: grid;
+      grid-template-columns: auto 18em;
+      grid-gap: 1.5em;
     }
     section:nth-child(even) {
-      background-color: #fafafa;
+      background-color: #f7f7f7;
     }
   </style>
   <body>
-    <h1 data-translate="settingsHeading">Preferences</h1>
     <form class="TSP-settings">
       <section>
         <div class="checkbox">
@@ -97,6 +91,8 @@
         <img class="reference-image" src="../assets/settings/hideAddNewList.png" alt="'Hide add another list' feature">
       </section>
     </form>
+
+    <p style="padding-left: 1.5em">Found an error? Help getting it fixed by <a target="_blank" href="https://github.com/christiankaindl/trello-super-powers/issues">reporting an issue</a>.</p>
 
     <script src="/translate.js"></script>
     <script src="options.js"></script>
