@@ -11,7 +11,7 @@ Trello Super Powers implements some small yet useful enhancements into your ever
 - Visible label text
 - Clickable IDs on hover (+ they get copied to your clipboard when clicked)
 - Compact Mode: Removes all clutter if you want to focus
-- Resizable lists: imply click and drag to adjust the size of your Trello lists
+- Resizable lists: Simply click and drag to adjust the size of your Trello lists
 - See at a glance how many cards are in each list
 - Option to hide "Add new List"-Element
 
