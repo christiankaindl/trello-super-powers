@@ -152,9 +152,9 @@ var features = {
         function adjustSize (e) {
           const styleId = document.getElementById('inserted-tsp-styles')
           const currentWidth =
-              listWidth + e.movementX / 4 < 400 &&
-              listWidth + e.movementX / 4 > 150
-                ? (listWidth = listWidth + e.movementX / 4)
+              listWidth + e.movementX / 3 < 500 &&
+              listWidth + e.movementX / 3 > 150
+                ? (listWidth = listWidth + e.movementX / 3)
                 : listWidth
 
           styleId.textContent = `.list-wrapper {width: ${currentWidth}px}`
