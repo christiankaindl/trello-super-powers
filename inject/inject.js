@@ -208,6 +208,10 @@ var features = {
           lists[i] = listReference
         })
 
+      await new Promise(function (resolve) {
+        setTimeout(() => { resolve() }, 1000)
+      })
+
       // Cycle through the Trello lists in the DOM and append resize element after each
       for (let i = 1; i < lists.length; i++) {
         const resizeElem = createResizeElem()
