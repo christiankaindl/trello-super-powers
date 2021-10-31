@@ -22,7 +22,7 @@ function gracefullyInject (feature, args) {
  * @returns {object} An object with current settings.
  */
 async function getSettings () {
-  return await browser.storage.local.get()
+  return browser.storage.local.get()
 }
 
 // NOTE: Ideally in the future, each feature has its own module
@@ -34,7 +34,7 @@ var features = {
    */
   id (onlyShowOnHover) {
     return new Promise(function (resolve, reject) {
-      let input = document.createElement('input')
+      const input = document.createElement('input')
 
       // Add dummy element so we can use the clipboard functionality
       input.setAttribute('style', 'height: 0px;padding: 0px; margin: 0px; border: none;')
@@ -86,14 +86,12 @@ var features = {
   compact (byDefault) {
     return new Promise(async function (resolve, reject) {
       function createCompactModeButton () {
-        let parent, child
-
-        parent = document.createElement('a')
+        const parent = document.createElement('a')
         parent.setAttribute('class', 'board-header-btn compact-mode-button')
         // TODO: Internationalize this string!
         parent.setAttribute('title', 'Toggle Compact Mode')
 
-        child = document.createElement('span')
+        const child = document.createElement('span')
         child.setAttribute('class', 'board-header-btn-text') // The `board-header-btn-text` class is provided by Trello itself
         child.textContent = browser.i18n.getMessage('settingsCompactTitle')
 
@@ -107,7 +105,7 @@ var features = {
         board.classList.toggle('compact-mode')
       }
 
-      let compactModeButton = createCompactModeButton()
+      const compactModeButton = createCompactModeButton()
 
       compactModeButton.addEventListener('click', toggleCompactMode)
 
@@ -129,8 +127,8 @@ var features = {
    * @returns {promise}
    */
   hideAddNewList () {
-    return new Promise(async function (resolve, reject) {
-      let addNewListElement = document.getElementsByClassName('js-add-list')[0]
+    return new Promise(function (resolve, reject) {
+      const addNewListElement = document.getElementsByClassName('js-add-list')[0]
       addNewListElement.classList.toggle('hide-element')
 
       console.info("TSP: feature 'Hide Add new List' injected")
@@ -152,8 +150,8 @@ var features = {
         }
 
         function adjustSize (e) {
-          let styleId = document.getElementById('inserted-tsp-styles'),
-            currentWidth =
+          const styleId = document.getElementById('inserted-tsp-styles')
+          const currentWidth =
               listWidth + e.movementX / 4 < 400 &&
               listWidth + e.movementX / 4 > 150
                 ? (listWidth = listWidth + e.movementX / 4)
@@ -174,7 +172,7 @@ var features = {
           })
         }
 
-        let resizeElem = document.createElement('div')
+        const resizeElem = document.createElement('div')
 
         resizeElem.setAttribute('class', 'resize-element')
         // Listen for mouse down
@@ -183,8 +181,8 @@ var features = {
         return resizeElem
       }
 
-      var listWidth,
-        lists = []
+      var listWidth
+      var lists = []
 
       try {
         listWidth = (await browser.storage.local.get()).list.width
@@ -195,7 +193,7 @@ var features = {
 
       // Insert a <style> element in the <head> if not already created
       if (!document.getElementById('inserted-tsp-styles')) {
-        let styleElem = document
+        const styleElem = document
           .getElementsByTagName('head')[0]
           .appendChild(document.createElement('style'))
 
@@ -212,7 +210,7 @@ var features = {
 
       // Cycle through the Trello lists in the DOM and append resize element after each
       for (let i = 1; i < lists.length; i++) {
-        let resizeElem = createResizeElem()
+        const resizeElem = createResizeElem()
         lists[i].parentElement.insertBefore(resizeElem, lists[i])
       }
 
@@ -261,11 +259,11 @@ async function initializeFeatures () {
     window.setTimeout(initializeFeatures, 2000)
     return
   }
-  let elem = document.createElement('span')
+  const elem = document.createElement('span')
   elem.setAttribute('id', 'TSP-injected')
   board.appendChild(elem)
 
-  let settings = await getSettings()
+  const settings = await getSettings()
 
   // IDEA: Maybe a loop that iterates the 'features' object would be even easier
   if (settings.copyId) gracefullyInject(features.id, settings.copyId_onlyShowOnHover)
@@ -297,15 +295,15 @@ async function handleMessage (message) {
     */
     function formatData (card, i) {
       // Bring the information in the right format
-      let formattedCard = {
+      const formattedCard = {
         name: card.name,
         url: card.url,
         shortUrl: card.shortUrl,
         idShort: card.idShort,
         description: card.desc,
         labels: (() => {
-          let labelNames = []
-          for (let j in card.labels) {
+          const labelNames = []
+          for (const j in card.labels) {
             labelNames[j] = card.labels[j].name
           }
           return labelNames.join(', ')
@@ -318,7 +316,7 @@ async function handleMessage (message) {
           }
 
           // Find the list that the current card is in
-          let list = boardData.lists.find(matchListId)
+          const list = boardData.lists.find(matchListId)
           return list.name
         })(),
         due: card.due
@@ -327,9 +325,9 @@ async function handleMessage (message) {
       return formattedCard
     }
 
-    let boardData,
-      cardsData,
-      { delimiter = ';', includeArchived = false, tabUrl: boardUrl } = message
+    let boardData
+    let cardsData
+    const { delimiter = ';', includeArchived = false, tabUrl: boardUrl } = message
 
     // Fetch JSON from current Trello board
     boardData = await fetch(`${boardUrl}.json`, {
