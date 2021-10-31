@@ -65,12 +65,19 @@
   width: 8px;
   cursor: col-resize;
   margin: 0px;
+  border-radius: 99px;
 
   /* borrowed from Trellos .list-wrapper*/
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
   white-space: nowrap;
+}
+.resize-element:hover {
+  background-color: rgba(170, 170, 170, 0.25);
+}
+.resize-element:active {
+  background-color: rgba(170, 170, 170, 0.5);
 }
 .list-card {
   max-width: none;
