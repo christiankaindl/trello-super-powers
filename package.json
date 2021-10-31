@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:firefox": "web-ext run --source-dir ./"
+    "start:firefox": "web-ext run --source-dir ./",
+    "build": "web-ext build",
+    "lint": "web-ext lint"
   },
   "keywords": [
     "add-on",
