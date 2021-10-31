@@ -253,6 +253,7 @@ async function initializeFeatures () {
     return
   }
 
+  board = document.getElementById('content')
   // Trello board not yet ready
   if (!board) {
     console.info('[Trello Super Powers] Board not yet ready. Trying again in 2 seconds.')
@@ -356,7 +357,6 @@ async function handleMessage (message) {
     return new Blob([cardsData], { type: 'application/csv' })
   }
 }
-
 var board = document.getElementById('content')
 
 browser.runtime.onMessage.addListener(handleMessage)
