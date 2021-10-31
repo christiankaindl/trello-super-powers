@@ -20,6 +20,11 @@ Also you can find explanation of these features and a way to turn them off in th
 
 There are plenty of features waiting to be implemented, most notably Account integration, which would allow for blazing fast access to your boards and notification integration which would give you the newest from the newest directly from the Firefox toolbar.
 
+## Local development
+- Clone repository: `git clone https://github.com/christiankaindl/trello-super-powers.git`
+- Install npm dependencies: 
+- Start local dev environment: `npm run start` (starts a fresh Firefo instance with Trello Super Powers pre-loaded)
+
 ## Contribute
 
 If you want to contribute to this project, that is awesome! I tried to comment the code as good as I can and optimize it for readability. Hints and tricks to get you started can be found in the [CONTRIBUTING.md](https://github.com/christiankaindl/trello-super-powers/blob/master/CONTRIBUTING.md) file.
