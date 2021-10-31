@@ -70,7 +70,7 @@ var features = {
         })
       }
 
-      console.info("TSP: feature 'id' injected")
+      console.info('[Trello Super Powers] Injected feature: "Show card IDs"')
       board.classList.add('TSP-id-enabled')
       if (onlyShowOnHover) {
         board.classList.add('onlyShowOnHover')
@@ -114,7 +114,7 @@ var features = {
         .getElementById('permission-level')
         .parentElement.appendChild(compactModeButton)
 
-      console.info("TSP: feature 'compact' injected")
+      console.info('[Trello Super Powers] Injected feature "Compact Modew"')
       board.classList.add('TSP-compact-enabled')
 
       byDefault && compactModeButton.click()
@@ -131,7 +131,7 @@ var features = {
       const addNewListElement = document.getElementsByClassName('js-add-list')[0]
       addNewListElement.classList.toggle('hide-element')
 
-      console.info("TSP: feature 'Hide Add new List' injected")
+      console.info('[Trello Super Powers] Injected feature: "Hide \'Add new List\'"')
 
       resolve()
     })
@@ -166,7 +166,7 @@ var features = {
 
           browser.storage.local.set({ list: { width: listWidth } }).catch(e => {
             console.error(
-              "TSP: Could not save 'listWidth' to browser sync storage.",
+              "[Trello Super Powers] Could not save 'listWidth' to browser sync storage.",
               e
             )
           })
@@ -187,7 +187,7 @@ var features = {
       try {
         listWidth = (await browser.storage.local.get()).list.width
       } catch (e) {
-        console.error('TSP Error: Could not get local storage', e)
+        console.error('[Trello Super Powers] Error: Could not get local storage', e)
         listWidth = 270
       }
 
@@ -214,7 +214,7 @@ var features = {
         lists[i].parentElement.insertBefore(resizeElem, lists[i])
       }
 
-      console.info("TSP: feature 'resize' injected")
+      console.info('[Trello Super Powers] Injected feature "Resizable lists"')
       resolve()
     })
   },
@@ -223,7 +223,7 @@ var features = {
    */
   label () {
     // CSS only feature
-    console.info("TSP: feature 'label' injected")
+    console.info('[Trello Super Powers]: Injected feature: "Show label text"')
     board.classList.add('TSP-label-enabled')
   },
   /**
@@ -231,7 +231,7 @@ var features = {
    */
   numberOfCards () {
     // CSS only feature
-    console.info("TSP: feature 'numberOfCards' injected")
+    console.info('[Trello Super Powers]: Injected feature: "Show number of cards"')
     board.classList.add('TSP-numberOfCards-enabled')
   }
 }
@@ -249,7 +249,7 @@ async function initializeFeatures () {
 
   initAttemps++
   if (initAttemps >= 3) {
-    console.error('[Trello Super Powers] Could not initialize features. Try reloading the page, or if it keeps happening submit an issue at https://github.com/christiankaindl/trello-super-powers/issues')
+    console.error('[Trello Super Powers] Too many initialization attempts. Try reloading the page, or if it keeps happening submit an issue at https://github.com/christiankaindl/trello-super-powers/issues')
     return
   }
 
@@ -350,7 +350,7 @@ async function handleMessage (message) {
         delimiter: delimiter
       })
     } catch (e) {
-      console.error('Could not parse JSON data: ', e)
+      console.error('[Trello Super Powers] Could not parse JSON data: ', e)
     }
 
     return new Blob([cardsData], { type: 'application/csv' })

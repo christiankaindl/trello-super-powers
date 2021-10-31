@@ -24,11 +24,11 @@ async function urlCheck (id, updateReason, state) {
     browser.pageAction.show(id)
 
     injectStatus = 'fullfilled'
-    console.info(`TSP: successfully injected 'inject.js' into ${state.url}`)
+    console.info(`[Trello Super Powers] Successfully injected 'inject.js' into ${state.url}`)
   } catch (e) {
     injectStatus = 'rejected'
     console.error(
-      `TSP Error. Could not inject 'inject.js' into ${state.url}: `,
+      `[Trello Super Powers] Error: Could not inject 'inject.js' into ${state.url}: `,
       e
     )
   }
@@ -127,7 +127,7 @@ async function handleMessage (message) {
         filename: filename
       })
     } catch (e) {
-      console.error('TSP error: ', e)
+      console.error('[Trello Super Powers] Error: ', e)
 
       browser.notifications.create({
         type: 'basic',

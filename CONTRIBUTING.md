@@ -2,7 +2,7 @@
 
 Thanks for considering supporting the development of Trello Super Powers!
 
-There are **2** ways to contribute to TSP:
+There are **2** ways to contribute to Trello Super Powers:
 
 - [Translations](#translations)
 - [Code](#coding)
