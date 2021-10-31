@@ -1,0 +1,27 @@
+{
+  "name": "trello-super-powers",
+  "description": "Firefox add-on to enhance your Trello (trello.com) experience. Get it here ->  [https://addons.mozilla.org/en-US/firefox/addon/trello-super-powers/](https://addons.mozilla.org/en-US/firefox/addon/trello-super-powers/)",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:firefox": "web-ext run --source-dir ./"
+  },
+  "keywords": [
+    "add-on",
+    "web-extension",
+    "trello"
+  ],
+  "author": "Christian Kaindl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christiankaindl/trello-super-powers/issues"
+  },
+  "homepage": "https://github.com/christiankaindl/trello-super-powers#readme",
+  "devDependencies": {
+    "web-ext": "^6.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christiankaindl/trello-super-powers.git"
+  }
+}
