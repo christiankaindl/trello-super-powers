@@ -239,7 +239,7 @@ var features = {
 /**
  * Initialize and inject all features.
  */
-let initAttemps = 0
+var initAttemps = 0
 async function initializeFeatures () {
   // Already injected
   if (document.getElementById('TSP-injected')) {
