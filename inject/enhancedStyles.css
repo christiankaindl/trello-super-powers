@@ -64,7 +64,7 @@
   height: 100%;
   width: 8px;
   cursor: col-resize;
-  margin: 0px;
+  margin: 0px -4px;
   border-radius: 99px;
 
   /* borrowed from Trellos .list-wrapper*/
